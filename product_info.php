@@ -26,17 +26,13 @@
   if ($product_check['total'] < 1) {
 ?>
 
-<div class="contentContainer">
-
   <div class="row">
     <?php echo $oscTemplate->getContent('product_info_not_found'); ?>
   </div>
-  
-</div>
 
 <?php
   } else {
-    $product_info_query = tep_db_query("select p.products_id, pd.products_name, pd.products_description, p.products_model, p.products_quantity, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id, p.products_gtin from products p, products_description pd where p.products_status = '1' and p.products_id = '" . (int)$_GET['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
+    $product_info_query = tep_db_query("select p.*, pd.* from products p, products_description pd where p.products_status = '1' and p.products_id = '" . (int)$_GET['products_id'] . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$languages_id . "'");
     $product_info = tep_db_fetch_array($product_info_query);
 
     tep_db_query("update products_description set products_viewed = products_viewed+1 where products_id = '" . (int)$_GET['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
@@ -51,13 +47,9 @@
   }
 ?>
 
-<div class="contentContainer">
-
   <div class="row is-product">
     <?php echo $oscTemplate->getContent('product_info'); ?>
   </div>
-
-</div>
 
 </form>
 

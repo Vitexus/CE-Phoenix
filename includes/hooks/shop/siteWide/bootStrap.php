@@ -15,24 +15,23 @@
 */
 
 class hook_shop_siteWide_bootStrap {
-  var $version = '4.3.1';
-  
-  var $sitestart = null;
-  var $siteend = null;
-  
+
+  public $version = '4.5.0';
+
+  public $sitestart = null;
+  public $siteend = null;
+
   function listen_injectSiteStart() {
-    $this->sitestart .= '<!-- bs hooked -->' . PHP_EOL;
-    $this->sitestart .= '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">' . PHP_EOL;
+    $this->sitestart .= '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha256-aAr2Zpq8MZ+YA/D6JtRD3xtrwpEz2IqOS+pWD/7XKIw=" crossorigin="anonymous" />' . PHP_EOL;
 
     return $this->sitestart;
   }
-  
+
   function listen_injectSiteEnd() {
-    $this->siteend .= '<!-- bs hooked -->' . PHP_EOL;
-    $this->siteend .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>' . PHP_EOL;
-    $this->siteend .= '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>' . PHP_EOL;
+    $this->siteend .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>' . PHP_EOL;
+    $this->siteend .= '<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>' . PHP_EOL;
 
     return $this->siteend;
   }
-  
+
 }

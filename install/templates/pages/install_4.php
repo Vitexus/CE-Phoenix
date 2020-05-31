@@ -5,7 +5,7 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2018 osCommerce
+  Copyright (c) 2020 osCommerce
 
   Released under the GNU General Public License
 */
@@ -16,12 +16,6 @@
   osc_db_query('update configuration set configuration_value = "' . trim($_POST['CFG_STORE_NAME']) . '" where configuration_key = "STORE_NAME"');
   osc_db_query('update configuration set configuration_value = "' . trim($_POST['CFG_STORE_OWNER_NAME']) . '" where configuration_key = "STORE_OWNER"');
   osc_db_query('update configuration set configuration_value = "' . trim($_POST['CFG_STORE_OWNER_EMAIL_ADDRESS']) . '" where configuration_key = "STORE_OWNER_EMAIL_ADDRESS"');
-
-  if (!empty($_POST['CFG_STORE_OWNER_NAME']) && !empty($_POST['CFG_STORE_OWNER_EMAIL_ADDRESS'])) {
-    osc_db_query('update configuration set configuration_value = "\"' . trim($_POST['CFG_STORE_OWNER_NAME']) . '\" <' . trim($_POST['CFG_STORE_OWNER_EMAIL_ADDRESS']) . '>" where configuration_key = "EMAIL_FROM"');
-  } else {
-    osc_db_query('update configuration set configuration_value = "' . trim($_POST['CFG_STORE_OWNER_EMAIL_ADDRESS']) . '" where configuration_key = "EMAIL_FROM"');
-  }
 
   if ( !empty($_POST['CFG_ADMINISTRATOR_USERNAME']) ) {
     $check_query = osc_db_query('select user_name from administrators where user_name = "' . trim($_POST['CFG_ADMINISTRATOR_USERNAME']) . '"');
@@ -39,10 +33,9 @@
 <div class="row">
   <div class="col-sm-9">
     <div class="alert alert-info" role="alert">
-      <h1>New Installation</h1>
-
-      <p>This web-based installation routine will correctly setup and configure OSCOM CE Phoenix to run on this server.</p>
-      <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
+      <h1>Finished!</h1>
+      
+      <p>The installation of your online store was successful! Click on either button to start your online selling experience:</p>
     </div>
   </div>
   <div class="col-sm-3">
@@ -68,8 +61,6 @@
 
 <div class="row">
   <div class="col-12 col-sm-9">
-
-    <h2 class="h4">Finished!</h2>
     
     <?php
     $dir_fs_document_root = $_POST['DIR_FS_DOCUMENT_ROOT'];
@@ -192,26 +183,23 @@
     }
     ?>
 
-    <div class="alert alert-success" role="alert">The installation of your online store was successful! Click on either button to start your online selling experience:</div>
-
-    <br />
-
     <div class="row">
-      <div class="col"><?php echo osc_draw_button('Administration Tool (Backend)', 'locked', $http_server . $http_catalog . $admin_folder . '/index.php', 'primary', array('newwindow' => 1), 'btn-info btn-block'); ?></div>
-      <div class="col"><?php echo osc_draw_button('Online Store (Frontend)', 'cart', $http_server . $http_catalog . 'index.php', 'primary', array('newwindow' => 1), 'btn-success btn-block'); ?></div>      
-      <div class="col"><?php echo osc_draw_button('Phoenix Club', null, 'https://forums.oscommerce.com/clubs/1-phoenix/', 'primary', array('newwindow' => 1), 'btn-danger btn-block'); ?></div>
+      <div class="col"><?php echo osc_draw_button('Admin (Backend)', '<i class="fas fa-lock mr-2"></i>', $http_server . $http_catalog . $admin_folder . '/index.php', 'primary', ['newwindow' => 1], 'btn-info btn-block'); ?></div>
+      <div class="col"><?php echo osc_draw_button('Store (Frontend)', '<i class="fas fa-shopping-cart mr-2"></i>', $http_server . $http_catalog . 'index.php', 'primary', ['newwindow' => 1], 'btn-success btn-block'); ?></div>      
+      <div class="col"><?php echo osc_draw_button('Phoenix Club', '<img src="images/icon_phoenix.png" class="mr-2">', 'https://forums.oscommerce.com/clubs/1-phoenix/', 'primary', ['newwindow' => 1], 'btn-dark btn-block'); ?></div>
     </div>
   </div>
   
   <div class="col-12 col-sm-3">
-    <h2 class="h4">Step 4</h2>
+    <h4>Step 4</h4>
     <div class="card mb-2">
       <div class="card-body">      
         <p>Congratulations on installing and configuring OSCOM CE Phoenix as your online store solution!</p>
-        <p>We wish you all the best with the success of your online store and welcome you to join and participate in our community.</p>
+        <p>We wish you all the best with the success of your online store.  Please join and participate in our community.</p>
+        <p><?php echo osc_draw_button('Phoenix Club', '<img src="images/icon_phoenix.png" class="mr-2">', 'https://forums.oscommerce.com/clubs/1-phoenix/', 'primary', ['newwindow' => 1], 'btn-dark btn-block'); ?></p>
       </div>
       <div class="card-footer">      
-        <p>- <a class="card-link" href="http://www.oscommerce.com/Us&Team" target="_blank">The osCommerce Team</a></p>
+        - <a class="card-link" href="https://forums.oscommerce.com/clubs/1-phoenix/" target="_blank">The Phoenix Team</a>
       </div>
     </div>
   </div>  

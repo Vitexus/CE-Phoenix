@@ -5,67 +5,95 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2010 osCommerce
+
+  Copyright (c) 2020 osCommerce
 
   Released under the GNU General Public License
 */
 
-  class d_customers {
-    var $code = 'd_customers';
-    var $title;
-    var $description;
-    var $sort_order;
-    var $enabled = false;
 
-    function __construct() {
-      $this->title = MODULE_ADMIN_DASHBOARD_CUSTOMERS_TITLE;
-      $this->description = MODULE_ADMIN_DASHBOARD_CUSTOMERS_DESCRIPTION;
+  class d_customers extends abstract_module {
 
-      if ( defined('MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS') ) {
-        $this->sort_order = MODULE_ADMIN_DASHBOARD_CUSTOMERS_SORT_ORDER;
-        $this->enabled = (MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS == 'True');
+    const CONFIG_KEY_BASE = 'MODULE_ADMIN_DASHBOARD_CUSTOMERS_';
+
+    const REQUIRES = [
+      'id',
+      'sortable_name',
+      'date_account_created',
+    ];
+
+    public $content_width = 6;
+
+    public function __construct() {
+      parent::__construct();
+
+      if ($this->enabled) {
+        $this->content_width = (int)(self::get_constant('MODULE_ADMIN_DASHBOARD_CUSTOMERS_CONTENT_WIDTH') ?? 6);
       }
     }
 
     function getOutput() {
-      $output = '<table border="0" width="100%" cellspacing="0" cellpadding="4">' .
-                '  <tr class="dataTableHeadingRow">' .
-                '    <td class="dataTableHeadingContent">' . MODULE_ADMIN_DASHBOARD_CUSTOMERS_TITLE . '</td>' .
-                '    <td class="dataTableHeadingContent" align="right">' . MODULE_ADMIN_DASHBOARD_CUSTOMERS_DATE . '</td>' .
-                '  </tr>';
+      global $customer_data;
 
-      $customers_query = tep_db_query("select c.customers_id, c.customers_lastname, c.customers_firstname, ci.customers_info_date_account_created from " . TABLE_CUSTOMERS . " c, " . TABLE_CUSTOMERS_INFO . " ci where c.customers_id = ci.customers_info_id order by ci.customers_info_date_account_created desc limit 6");
+      $output = sprintf(<<<'EOTEXT'
+<table class="table table-striped table-hover mb-2">
+ <thead>
+    <tr class="thead-dark">
+      <th>%s</th>
+      <th class="text-right">%s</th>
+    </tr>
+  </thead>
+  <tbody>
+EOTEXT
+, MODULE_ADMIN_DASHBOARD_CUSTOMERS_TITLE, MODULE_ADMIN_DASHBOARD_CUSTOMERS_DATE);
+
+      $customer_limit = self::get_constant('MODULE_ADMIN_DASHBOARD_CUSTOMERS_DISPLAY') ?? 6;
+      $customers_query = tep_db_query(
+        $customer_data->add_order_by(
+          $customer_data->build_read(['id', 'sortable_name', 'date_account_created'], 'customers'), ['date_account_created' => 'DESC'])
+        . ' LIMIT ' . (int)$customer_limit);
       while ($customers = tep_db_fetch_array($customers_query)) {
-        $output .= '  <tr class="dataTableRow" onmouseover="rowOverEffect(this);" onmouseout="rowOutEffect(this);">' .
-                   '    <td class="dataTableContent"><a href="' . tep_href_link('customers.php', 'cID=' . (int)$customers['customers_id'] . '&action=edit') . '">' . tep_output_string_protected($customers['customers_firstname'] . ' ' . $customers['customers_lastname']) . '</a></td>' .
-                   '    <td class="dataTableContent" align="right">' . tep_date_short($customers['customers_info_date_account_created']) . '</td>' .
-                   '  </tr>';
+        $output .= sprintf(<<<'EOTEXT'
+    <tr>
+      <td class="dataTableContent"><a href="%s">%s</a></td>
+      <td class="dataTableContent" align="right">%s</td>
+    </tr>
+EOTEXT
+, tep_href_link('customers.php', 'cID=' . (int)$customer_data->get('id', $customers) . '&action=edit'),
+  tep_output_string_protected($customer_data->get('sortable_name', $customers)),
+  tep_date_short($customer_data->get('date_account_created', $customers)));
       }
 
-      $output .= '</table>';
+      $output .= "  </tbody>\n</table>";
 
       return $output;
     }
 
-    function isEnabled() {
-      return $this->enabled;
+    public function get_parameters() {
+      return [
+        'MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS' => [
+          'title' => 'Enable Customers Module',
+          'value' => 'True',
+          'desc' => 'Do you want to show the newest customers on the dashboard?',
+          'set_func' => "tep_cfg_select_option(['True', 'False'], ",
+        ],
+        'MODULE_ADMIN_DASHBOARD_CUSTOMERS_DISPLAY' => [
+          'title' => 'Customers to display',
+          'value' => '5',
+          'desc' => 'This number of Customers will display, ordered by most recent sign up.',
+        ],
+        'MODULE_ADMIN_DASHBOARD_CUSTOMERS_CONTENT_WIDTH' => [
+          'title' => 'Content Width',
+          'value' => '6',
+          'desc' => 'What width container should the content be shown in? (12 = full width, 6 = half width).',
+          'set_func' => "tep_cfg_select_option(['12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'], ",
+        ],
+        'MODULE_ADMIN_DASHBOARD_CUSTOMERS_SORT_ORDER' => [
+          'title' => 'Sort Order',
+          'value' => '0',
+          'desc' => 'Sort order of display. Lowest is displayed first.',
+        ],
+      ];
     }
 
-    function check() {
-      return defined('MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS');
-    }
-
-    function install() {
-      tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Customers Module', 'MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS', 'True', 'Do you want to show the newest customers on the dashboard?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_ADMIN_DASHBOARD_CUSTOMERS_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', now())");
-    }
-
-    function remove() {
-      tep_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
-    }
-
-    function keys() {
-      return array('MODULE_ADMIN_DASHBOARD_CUSTOMERS_STATUS', 'MODULE_ADMIN_DASHBOARD_CUSTOMERS_SORT_ORDER');
-    }
   }
-?>
