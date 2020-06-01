@@ -1,4 +1,5 @@
 <?php
+
 /*
   $Id$
 
@@ -8,9 +9,9 @@
   Copyright (c) 2020 osCommerce
 
   Released under the GNU General Public License
-*/
+ */
 
-  abstract class abstract_module {
+abstract class abstract_module {
 
     const CONFIG_KEY_BASE = self::CONFIG_KEY_BASE;
 
@@ -24,98 +25,120 @@
     public $sort_order;
 
     protected static function get_constant($constant_name) {
-      return defined($constant_name) ? constant($constant_name) : null;
+        return defined($constant_name) ? constant($constant_name) : null;
     }
 
+    /**
+     * 
+     */
     public function __construct() {
-      $this->code = get_class($this);
-      $this->title = self::get_constant(static::CONFIG_KEY_BASE . 'TEXT_TITLE')
-                  ?? self::get_constant(static::CONFIG_KEY_BASE . 'TITLE');
-      $this->description = self::get_constant(static::CONFIG_KEY_BASE . 'TEXT_DESCRIPTION')
-                        ?? self::get_constant(static::CONFIG_KEY_BASE . 'DESCRIPTION');
+        $this->code = get_class($this);
+        $this->title = self::get_constant(static::CONFIG_KEY_BASE . 'TEXT_TITLE') ?? self::get_constant(static::CONFIG_KEY_BASE . 'TITLE');
+        $this->description = self::get_constant(static::CONFIG_KEY_BASE . 'TEXT_DESCRIPTION') ?? self::get_constant(static::CONFIG_KEY_BASE . 'DESCRIPTION');
 
-      $this->status_key = static::CONFIG_KEY_BASE . 'STATUS';
-      if (defined($this->status_key)) {
-        $this->enabled = ('True' === constant($this->status_key));
-      }
+        $this->status_key = static::CONFIG_KEY_BASE . 'STATUS';
+        if (defined($this->status_key)) {
+            $this->enabled = ('True' === constant($this->status_key));
+        }
 
-      $this->sort_order = self::get_constant(static::CONFIG_KEY_BASE . 'SORT_ORDER') ?? 0;
+        $this->sort_order = self::get_constant(static::CONFIG_KEY_BASE . 'SORT_ORDER') ?? 0;
     }
 
+    /**
+     * Is this module enabled ?
+     * 
+     * @return boolean
+     */
     public function isEnabled() {
-      return $this->enabled;
+        return $this->enabled;
     }
 
+    /**
+     * Check status key presence in configuration
+     * 
+     * @return int
+     */
     public function check() {
-      if (!isset($this->_check)) {
-        $check_query = tep_db_query("SELECT configuration_value FROM configuration WHERE configuration_key = '" . $this->status_key . "'");
-        $this->_check = tep_db_num_rows($check_query);
-      }
+        if (!isset($this->_check)) {
+            $check_query = tep_db_query("SELECT configuration_value FROM configuration WHERE configuration_key = '" . $this->status_key . "'");
+            $this->_check = tep_db_num_rows($check_query);
+        }
 
-      return $this->_check;
+        return $this->_check;
     }
 
+    /**
+     * Common module installation
+     * 
+     * @param array $parameters
+     */
     protected function _install($parameters) {
-      $sort_order = 1;
-      foreach ($parameters as $key => $data) {
-        $sql_data = [
-          'configuration_title' => $data['title'],
-          'configuration_key' => $key,
-          'configuration_value' => ($data['value'] ?? ''),
-          'configuration_description' => $data['desc'],
-          'configuration_group_id' => 6,
-          'sort_order' => (int)$sort_order,
-          'date_added' => 'NOW()',
-        ];
+        $sort_order = 1;
+        foreach ($parameters as $key => $data) {
+            $sql_data = [
+                'configuration_title' => $data['title'],
+                'configuration_key' => $key,
+                'configuration_value' => ($data['value'] ?? ''),
+                'configuration_description' => $data['desc'],
+                'configuration_group_id' => 6,
+                'sort_order' => (int) $sort_order,
+                'date_added' => 'NOW()',
+            ];
 
-        if (isset($data['set_func'])) {
-          $sql_data['set_function'] = $data['set_func'];
+            if (isset($data['set_func'])) {
+                $sql_data['set_function'] = $data['set_func'];
+            }
+
+            if (isset($data['use_func'])) {
+                $sql_data['use_function'] = $data['use_func'];
+            }
+
+            tep_db_perform('configuration', $sql_data);
+            $sort_order++;
         }
-
-        if (isset($data['use_func'])) {
-          $sql_data['use_function'] = $data['use_func'];
-        }
-
-        tep_db_perform('configuration', $sql_data);
-        $sort_order++;
-      }
     }
 
+    /**
+     * 
+     * @param string $parameter_key
+     */
     public function install($parameter_key = null) {
-      $parameters = $this->get_parameters();
-      if (isset($parameter_key)) {
-        if (isset($parameters[$parameter_key])) {
-          $parameters = [$parameter_key => $parameters[$parameter_key]];
-        } else {
-          $parameters = [];
+        $parameters = $this->get_parameters();
+        if (isset($parameter_key)) {
+            if (isset($parameters[$parameter_key])) {
+                $parameters = [$parameter_key => $parameters[$parameter_key]];
+            } else {
+                $parameters = [];
+            }
         }
-      }
 
-      self::_install($parameters);
+        self::_install($parameters);
     }
 
     public function remove() {
-      tep_db_query("DELETE FROM configuration WHERE configuration_key IN ('" . implode("', '", $this->keys()) . "')");
+        tep_db_query("DELETE FROM configuration WHERE configuration_key IN ('" . implode("', '", $this->keys()) . "')");
     }
 
     public function keys() {
-      $parameters = $this->get_parameters();
+        $parameters = $this->get_parameters();
 
-      if ($this->check()) {
-        $missing_parameters = array_filter($parameters, function ($k) { return !defined($k); }, ARRAY_FILTER_USE_KEY);
+        if ($this->check()) {
+            $missing_parameters = array_filter($parameters, function ($k) {
+                return !defined($k);
+            }, ARRAY_FILTER_USE_KEY);
 
-        if ($missing_parameters) {
-          self::_install($missing_parameters);
+            if ($missing_parameters) {
+                self::_install($missing_parameters);
+            }
         }
-      }
 
-      return array_keys($parameters);
+        return array_keys($parameters);
     }
 
     abstract protected function get_parameters();
 
     public static function list_exploded($value) {
-      return nl2br(implode("\n", explode(';', $value)));
+        return nl2br(implode("\n", explode(';', $value)));
     }
 
-  }
+}
