@@ -33,7 +33,8 @@ class ImportLanguages {
      * 
      * @param array $importLanguages
      */
-    public function __construct($importLanguages = []) {
+    public function __construct($osc , $importLanguages = []) {
+        $this->oscLocation = $osc;
         $this->phxLocation = dirname(dirname(__DIR__));
         $this->translationsList = $this->translationFiles($this->phxLocation . '/includes/languages/' . $this->initialLanguage);
         foreach ($importLanguages as $lng) {
@@ -52,6 +53,11 @@ class ImportLanguages {
         if (!file_exists($destDir)) {
             mkdir($destDir);
         }
+        
+        if(file_exists($srcDir.'.php') && !file_exists($destDir.'.php')){
+            copy($srcDir.'.php', $destDir.'.php');
+        }
+        
         foreach ($this->translationsList as $weWant) {
             $srcFile = $srcDir . '/' . $weWant;
             $destFile = $destDir . '/' . $weWant;
