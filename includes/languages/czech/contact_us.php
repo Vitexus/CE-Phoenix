@@ -10,14 +10,14 @@
   Released under the GNU General Public License
  */
 
-define('HEADING_TITLE', 'Kontaktujte nás');
-define('NAVBAR_TITLE', 'Kontaktujte nás');
-define('TEXT_SUCCESS', 'Váš dotaz byl odeslán provozovateli obchodu.');
+const HEADING_TITLE = 'Kontaktujte nás';
+const NAVBAR_TITLE = 'Kontaktujte nás';
+const TEXT_SUCCESS = 'Váš dotaz byl odeslán provozovateli obchodu.';
 define('EMAIL_SUBJECT', 'Dotaz ze serveru '.STORE_NAME);
 
-define('ENTRY_NAME', 'Jméno:');
-define('ENTRY_EMAIL', 'E-Mail:');
-define('ENTRY_ENQUIRY', 'Dotaz/zpráva:');
+const ENTRY_NAME = 'Jméno:';
+const ENTRY_EMAIL = 'E-Mail:';
+const ENTRY_ENQUIRY = 'Dotaz/zpráva:';
 
 define('ERROR_ACTION_RECORDER',
     'Vaše zpráva nebyla odeslána! Chcete-li odeslat dotaz, zkuste to znovu za %s minut. Omlouváme se za případné nepohodlí, toto opatření slouží jako ochrana před automatizovanými útoky na poštovní server.',

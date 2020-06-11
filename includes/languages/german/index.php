@@ -10,24 +10,24 @@
   Released under the GNU General Public License
  */
 
-define('TEXT_MAIN', 'Wilkommen'); // entweder entfernen oder anderen Text wählen
-define('TABLE_HEADING_NEW_PRODUCTS', 'Neue Produkte im %s');
-define('TABLE_HEADING_UPCOMING_PRODUCTS', 'Wann ist was verfügbar');
-define('TABLE_HEADING_DATE_EXPECTED', 'Datum');
+const TEXT_MAIN = 'Wilkommen';
+const TABLE_HEADING_NEW_PRODUCTS = 'Neue Produkte im %s';
+const TABLE_HEADING_UPCOMING_PRODUCTS = 'Wann ist was verfügbar';
+const TABLE_HEADING_DATE_EXPECTED = 'Datum';
 define('HEADING_TITLE', 'Willkommen bei '.STORE_NAME, true);
-define('TABLE_HEADING_IMAGE', '');
-define('TABLE_HEADING_MODEL', 'Artikel-Nr.');
-define('TABLE_HEADING_PRODUCTS', 'Produktname');
-define('TABLE_HEADING_MANUFACTURER', 'Hersteller');
-define('TABLE_HEADING_QUANTITY', 'Anzahl');
-define('TABLE_HEADING_PRICE', 'Preis');
-define('TABLE_HEADING_WEIGHT', 'Gewicht');
-define('TABLE_HEADING_BUY_NOW', 'Jetzt bestellen');
-define('TEXT_NO_PRODUCTS', 'Es gibt keine Produkte in dieser Kategorie.');
-define('TEXT_NUMBER_OF_PRODUCTS', 'Artikel: ');
-define('TEXT_SHOW', '<strong>Zeigen:</strong>');
-define('TEXT_BUY', 'Bestelle \'');
-define('TEXT_NOW', '\' jetzt');
-define('TEXT_ALL_CATEGORIES', 'Alle Kategorien');
-define('TEXT_ALL_MANUFACTURERS', 'Alle Hersteller');
+const TABLE_HEADING_IMAGE = '';
+const TABLE_HEADING_MODEL = 'Artikel-Nr.';
+const TABLE_HEADING_PRODUCTS = 'Produktname';
+const TABLE_HEADING_MANUFACTURER = 'Hersteller';
+const TABLE_HEADING_QUANTITY = 'Anzahl';
+const TABLE_HEADING_PRICE = 'Preis';
+const TABLE_HEADING_WEIGHT = 'Gewicht';
+const TABLE_HEADING_BUY_NOW = 'Jetzt bestellen';
+const TEXT_NO_PRODUCTS = 'Es gibt keine Produkte in dieser Kategorie.';
+const TEXT_NUMBER_OF_PRODUCTS = 'Artikel: ';
+const TEXT_SHOW = '<strong>Zeigen:</strong>';
+const TEXT_BUY = 'Bestelle \'';
+const TEXT_NOW = '\' jetzt';
+const TEXT_ALL_CATEGORIES = 'Alle Kategorien';
+const TEXT_ALL_MANUFACTURERS = 'Alle Hersteller';
 ?>

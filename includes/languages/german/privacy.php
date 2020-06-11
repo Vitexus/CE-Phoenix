@@ -12,9 +12,9 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Privatsphäre und Datenschutz');
+const NAVBAR_TITLE = 'Privatsphäre und Datenschutz';
 
-define('HEADING_TITLE', 'Privatsphäre und Datenschutz');
+const HEADING_TITLE = 'Privatsphäre und Datenschutz';
 
 
 define('TEXT_INFORMATION',

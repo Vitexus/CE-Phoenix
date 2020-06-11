@@ -10,12 +10,12 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_CONTENT_LOGIN_FORM_TITLE', 'Přihlášení');
-  define('MODULE_CONTENT_LOGIN_FORM_DESCRIPTION', 'Zobrazit přihlašovací formulář na stránce Přihlášení');
+const MODULE_CONTENT_LOGIN_FORM_TITLE = 'Přihlášení';
+const MODULE_CONTENT_LOGIN_FORM_DESCRIPTION = 'Zobrazit přihlašovací formulář na stránce Přihlášení';
 
-  define('MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER', 'Přihlášení');
-  define('MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER', 'Již mám účet.');
-  define('MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN', 'Zapomenuté heslo? Klikněte zde.');
+const MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER = 'Přihlášení';
+const MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER = 'Již mám účet.';
+const MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN = 'Zapomenuté heslo? Klikněte zde.';
 
-  define('MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR', 'CHYBA: jméno/heslo nenalezeno.');
+const MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR = 'CHYBA: jméno/heslo nenalezeno.';
 ?>

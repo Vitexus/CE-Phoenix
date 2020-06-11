@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_TITLE', 'Mezisoučet');
-  define('MODULE_ORDER_TOTAL_SUBTOTAL_DESCRIPTION', 'Mezisoučet objednávky');
+const MODULE_ORDER_TOTAL_SUBTOTAL_TITLE = 'Mezisoučet';
+const MODULE_ORDER_TOTAL_SUBTOTAL_DESCRIPTION = 'Mezisoučet objednávky';
   

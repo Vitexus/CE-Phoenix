@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ACTION_RECORDER_CONTACT_US_TITLE', 'Kontakt');
-  define('MODULE_ACTION_RECORDER_CONTACT_US_DESCRIPTION', 'Loggt die Verwendung des Kontakt-Feature.');
+const MODULE_ACTION_RECORDER_CONTACT_US_TITLE = 'Kontakt';
+const MODULE_ACTION_RECORDER_CONTACT_US_DESCRIPTION = 'Loggt die Verwendung des Kontakt-Feature.';
 ?>

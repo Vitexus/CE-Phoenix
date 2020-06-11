@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_BOXES_CURRENCIES_TITLE', 'Měny');
-  define('MODULE_BOXES_CURRENCIES_DESCRIPTION', 'ukázat měny k dispozici');
-  define('MODULE_BOXES_CURRENCIES_BOX_TITLE', 'Měny');
+const MODULE_BOXES_CURRENCIES_TITLE = 'Měny';
+const MODULE_BOXES_CURRENCIES_DESCRIPTION = 'ukázat měny k dispozici';
+const MODULE_BOXES_CURRENCIES_BOX_TITLE = 'Měny';
 ?>

@@ -10,23 +10,23 @@
   Released under the GNU General Public License
  */
 
-//define('TEXT_MAIN', 'xxx');
-define('TABLE_HEADING_NEW_PRODUCTS', 'Novinky %s');
-define('TABLE_HEADING_UPCOMING_PRODUCTS', 'Připravujeme');
-define('TABLE_HEADING_DATE_EXPECTED', 'Bude k dispozici');
+const TEXT_MAIN = 'xxx';
+const TABLE_HEADING_NEW_PRODUCTS = 'Novinky %s';
+const TABLE_HEADING_UPCOMING_PRODUCTS = 'Připravujeme';
+const TABLE_HEADING_DATE_EXPECTED = 'Bude k dispozici';
 define('HEADING_TITLE', 'Vítejte na serveru '.STORE_NAME);
 
-define('TEXT_NO_PRODUCTS', 'V této kategorii není žádné zboží.');
-define('TEXT_NUMBER_OF_PRODUCTS', 'Počet: ');
-define('TEXT_SHOW', '<strong>vyberte:</strong>');
-define('TEXT_BUY', 'Koupit \'');
-define('TEXT_NOW', '\' nyní');
-define('TEXT_ALL_CATEGORIES', 'všechny kategorie');
-define('TEXT_ALL_MANUFACTURERS', 'všichni výrobci');
+const TEXT_NO_PRODUCTS = 'V této kategorii není žádné zboží.';
+const TEXT_NUMBER_OF_PRODUCTS = 'Počet: ';
+const TEXT_SHOW = '<strong>vyberte:</strong>';
+const TEXT_BUY = 'Koupit \'';
+const TEXT_NOW = '\' nyní';
+const TEXT_ALL_CATEGORIES = 'všechny kategorie';
+const TEXT_ALL_MANUFACTURERS = 'všichni výrobci';
 
 // seo
 if (($category_depth == 'top') && (!isset($_GET['manufacturers_id']))) {
-    define('META_SEO_TITLE', 'Index stránka název');
+const META_SEO_TITLE = 'Index stránka název';
     define('META_SEO_DESCRIPTION',
         'Toto je popis vašeho webu, který se má použít v popisovacím prvku META');
     /*

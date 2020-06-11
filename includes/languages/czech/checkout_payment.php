@@ -10,26 +10,26 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Zaplatit');
-define('NAVBAR_TITLE_2', 'Způsob platby');
+const NAVBAR_TITLE_1 = 'Zaplatit';
+const NAVBAR_TITLE_2 = 'Způsob platby';
 
-define('HEADING_TITLE', 'Způsob platby');
+const HEADING_TITLE = 'Způsob platby';
 
-define('TABLE_HEADING_BILLING_ADDRESS', 'Hlavní adresa');
+const TABLE_HEADING_BILLING_ADDRESS = 'Hlavní adresa';
 define('TEXT_SELECTED_BILLING_DESTINATION',
     'Vyberte nebo vytvořte hlavní adresu, je-li odlišná od adresy dodání.',
     true);
-define('TITLE_BILLING_ADDRESS', 'Hlavní adresa:');
+const TITLE_BILLING_ADDRESS = 'Hlavní adresa:';
 
-define('TABLE_HEADING_PAYMENT_METHOD', 'Vyberte způsob platby');
-define('TEXT_SELECT_PAYMENT_METHOD', '');
-define('TITLE_PLEASE_SELECT', '');
-define('TEXT_ENTER_PAYMENT_INFORMATION', 'Způsob platby.');
+const TABLE_HEADING_PAYMENT_METHOD = 'Vyberte způsob platby';
+const TEXT_SELECT_PAYMENT_METHOD = '';
+const TITLE_PLEASE_SELECT = '';
+const TEXT_ENTER_PAYMENT_INFORMATION = 'Způsob platby.';
 
-define('TABLE_HEADING_COMMENTS', 'Přidejte poznámku');
-define('PLACEHOLDER_COMMENTS', 'Poznámka');
+const TABLE_HEADING_COMMENTS = 'Přidejte poznámku';
+const PLACEHOLDER_COMMENTS = 'Poznámka';
 
-define('TITLE_CONTINUE_CHECKOUT_PROCEDURE', 'Pokračujte v nákupu');
-define('TEXT_CONTINUE_CHECKOUT_PROCEDURE', 'potvrďte objednávku');
+const TITLE_CONTINUE_CHECKOUT_PROCEDURE = 'Pokračujte v nákupu';
+const TEXT_CONTINUE_CHECKOUT_PROCEDURE = 'potvrďte objednávku';
 
-define('IMAGE_BUTTON_CONFIRMATION','souhrn');
+const IMAGE_BUTTON_CONFIRMATION = 'souhrn';

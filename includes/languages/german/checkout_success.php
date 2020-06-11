@@ -10,10 +10,10 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Kasse');
-define('NAVBAR_TITLE_2', 'Erfolg');
+const NAVBAR_TITLE_1 = 'Kasse';
+const NAVBAR_TITLE_2 = 'Erfolg';
 
-define('HEADING_TITLE', 'Ihr Bestellung ist ausgeführt worden.');
+const HEADING_TITLE = 'Ihr Bestellung ist ausgeführt worden.';
 
 define('TABLE_HEADING_COMMENTS',
     'Tragen Sie eine Anmerkung für die Bestellung ein');

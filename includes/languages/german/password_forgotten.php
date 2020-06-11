@@ -10,10 +10,10 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Anmelden');
-define('NAVBAR_TITLE_2', 'Passwort vergessen');
+const NAVBAR_TITLE_1 = 'Anmelden';
+const NAVBAR_TITLE_2 = 'Passwort vergessen';
 
-define('HEADING_TITLE', 'Ich habe mein Passwort vergessen!');
+const HEADING_TITLE = 'Ich habe mein Passwort vergessen!';
 
 define('TEXT_MAIN',
     'Wenn Sie Ihr Passwort vergessen haben, geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen Anweisungen, wie sicher Ihr Passwort ändern.',

@@ -10,27 +10,27 @@
   Released under the GNU General Public License
 */
 
-define('MODULE_SHIPPING_ZONES_TEXT_TITLE', 'Zóny (Zone Based Shipping Rates)');
-define('MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION', 'Modul umožǔje nastavit různou výši poštovného pro několik zón, definovaných jako seznam zemí. Poštovné se počítá na základě váhy nebo ceny.');
-define('MODULE_SHIPPING_ZONES_TEXT_WAY', 'Ground'); //no longer used
-define('MODULE_SHIPPING_ZONES_TEXT_UNITS', 'kg');
-define('MODULE_SHIPPING_ZONES_INVALID_ZONE', 'Do dané země nelze dodat');
-define('MODULE_SHIPPING_ZONES_UNDEFINED_RATE', 'Cenu dopravy nelze vypočítat');
+const MODULE_SHIPPING_ZONES_TEXT_TITLE = 'Zóny (Zone Based Shipping Rates)';
+const MODULE_SHIPPING_ZONES_TEXT_DESCRIPTION = 'Modul umožǔje nastavit různou výši poštovného pro několik zón, definovaných jako seznam zemí. Poštovné se počítá na základě váhy nebo ceny.';
+const MODULE_SHIPPING_ZONES_TEXT_WAY = 'Ground';
+const MODULE_SHIPPING_ZONES_TEXT_UNITS = 'kg';
+const MODULE_SHIPPING_ZONES_INVALID_ZONE = 'Do dané země nelze dodat';
+const MODULE_SHIPPING_ZONES_UNDEFINED_RATE = 'Cenu dopravy nelze vypočítat';
 //pure:new module internationalisation
-define('CONFIG_TITLE_MODULE_SHIPPING_ZONES_MODE','Tabulka ');
+const CONFIG_TITLE_MODULE_SHIPPING_ZONES_MODE = 'Tabulka ';
 define('CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_MODE','
 Náklady na dopravu jsou počítány na základě celkové objednávky nebo celkové hmotnosti objednaného zboží.
 Vyplňte tabulku dopravného pro různé skupiny zemí, v poslední skupině ponechte pole "Zóna N - země" prázdnou - příslušná Tabulka poštovného se použije pro všechny ostatní země .
 ');
-define('CONFIG_TITLE_NUM_ZONES','Počet zón');
-define('CONFIG_DESCRIPTION_NUM_ZONES','Zadejte počet zón (max. 10), uložte a znovu editujte, teprve tehdy se objeví nové zóny.');
+const CONFIG_TITLE_NUM_ZONES = 'Počet zón';
+const CONFIG_DESCRIPTION_NUM_ZONES = 'Zadejte počet zón (max. 10), uložte a znovu editujte, teprve tehdy se objeví nové zóny.';
 
-define('CONFIG_TITLE_MODULE_SHIPPING_ZONES_TAX_CLASS','Sazba DPH');
-define('CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_TAX_CLASS','Zvolte sazbu DPH pro poštovné. Pokud používáte Českou poštu - nastavte 0% (je osvobozena od DPH).');
+const CONFIG_TITLE_MODULE_SHIPPING_ZONES_TAX_CLASS = 'Sazba DPH';
+const CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_TAX_CLASS = 'Zvolte sazbu DPH pro poštovné. Pokud používáte Českou poštu - nastavte 0% (je osvobozena od DPH).';
 
-define('CONFIG_TITLE_MODULE_SHIPPING_ZONES_SORT_ORDER','Pořadí');
-define('CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_SORT_ORDER','Pořadí zobrazení.');
+const CONFIG_TITLE_MODULE_SHIPPING_ZONES_SORT_ORDER = 'Pořadí';
+const CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_SORT_ORDER = 'Pořadí zobrazení.';
 
-define('CONFIG_TITLE_MODULE_SHIPPING_ZONES_STATUS','Povolit modul Zóny?');
-define('CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_STATUS','Chcete povolit výpočet dopravného podle zón?');
+const CONFIG_TITLE_MODULE_SHIPPING_ZONES_STATUS = 'Povolit modul Zóny?';
+const CONFIG_DESCRIPTION_MODULE_SHIPPING_ZONES_STATUS = 'Chcete povolit výpočet dopravného podle zón?';
 

@@ -10,22 +10,22 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Zaplatit');
-define('NAVBAR_TITLE_2', 'Potvrdit');
+const NAVBAR_TITLE_1 = 'Zaplatit';
+const NAVBAR_TITLE_2 = 'Potvrdit';
 
-define('HEADING_TITLE', 'Rekapitulace nákupu');
+const HEADING_TITLE = 'Rekapitulace nákupu';
 
-define('HEADING_SHIPPING_INFORMATION', 'Doprava');
-define('HEADING_DELIVERY_ADDRESS', 'Adresa dodání');
-define('HEADING_SHIPPING_METHOD', 'Způsob dopravy');
-define('HEADING_PRODUCTS', 'Produkty');
-define('HEADING_TAX', 'Daň');
-define('HEADING_TOTAL', 'Celkem');
-define('HEADING_BILLING_INFORMATION', 'Platba');
-define('HEADING_BILLING_ADDRESS', 'Hlavní adresa');
-define('HEADING_PAYMENT_METHOD', 'Typ platby');
-define('HEADING_PAYMENT_INFORMATION', 'Platební informace');
-define('HEADING_ORDER_COMMENTS', 'Poznámka');
+const HEADING_SHIPPING_INFORMATION = 'Doprava';
+const HEADING_DELIVERY_ADDRESS = 'Adresa dodání';
+const HEADING_SHIPPING_METHOD = 'Způsob dopravy';
+const HEADING_PRODUCTS = 'Produkty';
+const HEADING_TAX = 'Daň';
+const HEADING_TOTAL = 'Celkem';
+const HEADING_BILLING_INFORMATION = 'Platba';
+const HEADING_BILLING_ADDRESS = 'Hlavní adresa';
+const HEADING_PAYMENT_METHOD = 'Typ platby';
+const HEADING_PAYMENT_INFORMATION = 'Platební informace';
+const HEADING_ORDER_COMMENTS = 'Poznámka';
 
-define('TEXT_EDIT', 'Upravit');
-define('EDIT_ITEM','[upravit]');
+const TEXT_EDIT = 'Upravit';
+const EDIT_ITEM = '[upravit]';

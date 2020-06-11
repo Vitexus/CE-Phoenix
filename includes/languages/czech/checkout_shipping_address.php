@@ -10,25 +10,25 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Zaplatit');
-define('NAVBAR_TITLE_2', 'Změnit dodací adresu');
+const NAVBAR_TITLE_1 = 'Zaplatit';
+const NAVBAR_TITLE_2 = 'Změnit dodací adresu';
 
-define('HEADING_TITLE', 'Dodací Informace');
+const HEADING_TITLE = 'Dodací Informace';
 
-define('TABLE_HEADING_SHIPPING_ADDRESS', 'Dodací adresa');
+const TABLE_HEADING_SHIPPING_ADDRESS = 'Dodací adresa';
 define('TEXT_SELECTED_SHIPPING_DESTINATION', 'Toto je hlavní dodací adresa.',
     true);
-define('TITLE_SHIPPING_ADDRESS', 'Adresa dodání:');
+const TITLE_SHIPPING_ADDRESS = 'Adresa dodání:';
 
-define('TABLE_HEADING_ADDRESS_BOOK_ENTRIES', 'Adresář');
+const TABLE_HEADING_ADDRESS_BOOK_ENTRIES = 'Adresář';
 define('TEXT_SELECT_OTHER_SHIPPING_DESTINATION',
     'Vyberte dodací adresu, bude-li dodáno jinam.');
-define('TITLE_PLEASE_SELECT', 'vyberte');
+const TITLE_PLEASE_SELECT = 'vyberte';
 
-define('TABLE_HEADING_NEW_SHIPPING_ADDRESS', 'Nová dodací adresa');
+const TABLE_HEADING_NEW_SHIPPING_ADDRESS = 'Nová dodací adresa';
 define('TEXT_CREATE_NEW_SHIPPING_ADDRESS',
     'Použijte formulář k vytvoření nové dodací adresy.');
 
-define('TITLE_CONTINUE_CHECKOUT_PROCEDURE', 'pokračujte v placení');
-define('TEXT_CONTINUE_CHECKOUT_PROCEDURE', 'Vyberte platební metodu.');
+const TITLE_CONTINUE_CHECKOUT_PROCEDURE = 'pokračujte v placení';
+const TEXT_CONTINUE_CHECKOUT_PROCEDURE = 'Vyberte platební metodu.';
 ?>

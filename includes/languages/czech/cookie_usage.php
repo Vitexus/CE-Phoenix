@@ -10,13 +10,13 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Cookie Usage');
-define('HEADING_TITLE', 'Cookie Usage');
+const NAVBAR_TITLE = 'Cookie Usage';
+const HEADING_TITLE = 'Cookie Usage';
 
 define('TEXT_INFORMATION',
     'Vypnuté Cookies. Pokud nechcete přijímat cookies, objednávat lze pouze e-mailem.',
     true);
 
-define('BOX_INFORMATION_HEADING', 'bezpečnost cookies');
-define('BOX_INFORMATION', 'Pro bezpečný nákup musí být Cookies zapnuté.');
+const BOX_INFORMATION_HEADING = 'bezpečnost cookies';
+const BOX_INFORMATION = 'Pro bezpečný nákup musí být Cookies zapnuté.';
 ?>

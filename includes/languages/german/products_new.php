@@ -10,10 +10,10 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Neue Produkte');
-define('HEADING_TITLE', 'Neue Produkte');
+const NAVBAR_TITLE = 'Neue Produkte';
+const HEADING_TITLE = 'Neue Produkte';
 
-define('TEXT_DATE_ADDED', 'aufgenommen am:');
-define('TEXT_MANUFACTURER', 'Hersteller:');
-define('TEXT_PRICE', 'Preis:');
+const TEXT_DATE_ADDED = 'aufgenommen am:';
+const TEXT_MANUFACTURER = 'Hersteller:';
+const TEXT_PRICE = 'Preis:';
 ?>

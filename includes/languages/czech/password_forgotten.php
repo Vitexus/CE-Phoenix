@@ -10,10 +10,10 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Přihlášení');
-define('NAVBAR_TITLE_2', 'Zapomenuté heslo');
+const NAVBAR_TITLE_1 = 'Přihlášení';
+const NAVBAR_TITLE_2 = 'Zapomenuté heslo';
 
-define('HEADING_TITLE', 'Zapomněl jsem své heslo!');
+const HEADING_TITLE = 'Zapomněl jsem své heslo!';
 
 define('TEXT_MAIN',
     'Zapomněl(a) jste heslo? Vložte svou e-mailovou adresu, která byla zadána při registraci a my Vám pošleme nové.',

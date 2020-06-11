@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_BOXES_BEST_SELLERS_TITLE', 'Nejprodávanější');
-  define('MODULE_BOXES_BEST_SELLERS_DESCRIPTION', 'ukázat všechno nejprodávanější zboží');
-  define('MODULE_BOXES_BEST_SELLERS_BOX_TITLE', 'Nejprodávanější');
+const MODULE_BOXES_BEST_SELLERS_TITLE = 'Nejprodávanější';
+const MODULE_BOXES_BEST_SELLERS_DESCRIPTION = 'ukázat všechno nejprodávanější zboží';
+const MODULE_BOXES_BEST_SELLERS_BOX_TITLE = 'Nejprodávanější';
 ?>

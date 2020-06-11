@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ACTION_RECORDER_ADMIN_LOGIN_TITLE', 'Admin-Panel Logins');
-  define('MODULE_ACTION_RECORDER_ADMIN_LOGIN_DESCRIPTION', 'Logt die Verwendung des Admin-Panel logins.');
+const MODULE_ACTION_RECORDER_ADMIN_LOGIN_TITLE = 'Admin-Panel Logins';
+const MODULE_ACTION_RECORDER_ADMIN_LOGIN_DESCRIPTION = 'Logt die Verwendung des Admin-Panel logins.';
 ?>

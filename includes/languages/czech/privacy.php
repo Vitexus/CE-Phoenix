@@ -10,8 +10,8 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Ochrana osobních údajů');
-define('HEADING_TITLE', 'Ochrana osobních údajů');
+const NAVBAR_TITLE = 'Ochrana osobních údajů';
+const HEADING_TITLE = 'Ochrana osobních údajů';
 
-define('TEXT_INFORMATION', 'Vložte text.');
+const TEXT_INFORMATION = 'Vložte text.';
 ?>

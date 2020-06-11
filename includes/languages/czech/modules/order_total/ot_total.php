@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ORDER_TOTAL_TOTAL_TITLE', 'Celkem k úhradě');
-  define('MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION', 'Celkem k úhradě');
+const MODULE_ORDER_TOTAL_TOTAL_TITLE = 'Celkem k úhradě';
+const MODULE_ORDER_TOTAL_TOTAL_DESCRIPTION = 'Celkem k úhradě';
   

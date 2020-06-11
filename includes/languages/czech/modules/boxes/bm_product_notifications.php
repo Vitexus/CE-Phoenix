@@ -10,9 +10,9 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_BOXES_PRODUCT_NOTIFICATIONS_TITLE', 'Oznámení o zboží');
-  define('MODULE_BOXES_PRODUCT_NOTIFICATIONS_DESCRIPTION', 'Ukázat oznámení o zboží'); //cs?
-  define('MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_TITLE', 'Oznámení');
-  define('MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY', 'Upozorněte mě na <strong>%s</strong>');
-  define('MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY_REMOVE', 'nechci oznámení o tomto zboží <strong>%s</strong>'); //cs?
+const MODULE_BOXES_PRODUCT_NOTIFICATIONS_TITLE = 'Oznámení o zboží';
+const MODULE_BOXES_PRODUCT_NOTIFICATIONS_DESCRIPTION = 'Ukázat oznámení o zboží';
+const MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_TITLE = 'Oznámení';
+const MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY = 'Upozorněte mě na <strong>%s</strong>';
+const MODULE_BOXES_PRODUCT_NOTIFICATIONS_BOX_NOTIFY_REMOVE = 'nechci oznámení o tomto zboží <strong>%s</strong>';
 ?>

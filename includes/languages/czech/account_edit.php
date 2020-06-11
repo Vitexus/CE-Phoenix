@@ -10,12 +10,12 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Můj účet');
-define('NAVBAR_TITLE_2', 'Edituj účet');
+const NAVBAR_TITLE_1 = 'Můj účet';
+const NAVBAR_TITLE_2 = 'Edituj účet';
 
-define('HEADING_TITLE', 'Informace o mém účtě');
+const HEADING_TITLE = 'Informace o mém účtě';
 
-define('SUCCESS_ACCOUNT_UPDATED', 'Váš účet byl správně změněn.');
+const SUCCESS_ACCOUNT_UPDATED = 'Váš účet byl správně změněn.';
 
-define('MY_PASSWORD','Moje heslo');
-define('EDIT_PASSWORD','Změnit heslo');
+const MY_PASSWORD = 'Moje heslo';
+const EDIT_PASSWORD = 'Změnit heslo';

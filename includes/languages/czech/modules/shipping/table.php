@@ -10,9 +10,9 @@
   Released under the GNU General Public License
 */
 
-define('MODULE_SHIPPING_TABLE_TEXT_TITLE', 'Table Rate');
-define('MODULE_SHIPPING_TABLE_TEXT_DESCRIPTION', 'Table Rate');
-define('MODULE_SHIPPING_TABLE_TEXT_WAY', 'Table Rate Way');
-define('MODULE_SHIPPING_TABLE_TEXT_WEIGHT', 'Hmotnost');
-define('MODULE_SHIPPING_TABLE_TEXT_AMOUNT', 'Množství');
+const MODULE_SHIPPING_TABLE_TEXT_TITLE = 'Table Rate';
+const MODULE_SHIPPING_TABLE_TEXT_DESCRIPTION = 'Table Rate';
+const MODULE_SHIPPING_TABLE_TEXT_WAY = 'Table Rate Way';
+const MODULE_SHIPPING_TABLE_TEXT_WEIGHT = 'Hmotnost';
+const MODULE_SHIPPING_TABLE_TEXT_AMOUNT = 'Množství';
 ?>

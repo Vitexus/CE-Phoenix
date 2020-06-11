@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ORDER_TOTAL_TAX_TITLE', 'Tax');
-  define('MODULE_ORDER_TOTAL_TAX_DESCRIPTION', 'Order Tax');
+const MODULE_ORDER_TOTAL_TAX_TITLE = 'Tax';
+const MODULE_ORDER_TOTAL_TAX_DESCRIPTION = 'Order Tax';
   

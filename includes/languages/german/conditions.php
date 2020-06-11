@@ -10,8 +10,8 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Allgemeine Geschäftsbedingungen');
-define('HEADING_TITLE', 'Allgemeine Geschäftsbedingungen');
+const NAVBAR_TITLE = 'Allgemeine Geschäftsbedingungen';
+const HEADING_TITLE = 'Allgemeine Geschäftsbedingungen';
 
 define('TEXT_INFORMATION',
     'Diese allgemeinen Verkaufs-und Lieferbedingungen gelten für alle Kaufverträge, die mit dem Shop Web Shop, Bertil Palmqvist einbezogen sind. Mit der Bestellung erklären Sie sich mit diesen Bedingungen. <br /> <br />

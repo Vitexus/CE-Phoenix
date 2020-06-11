@@ -10,12 +10,12 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Ihr Konto');
-define('NAVBAR_TITLE_2', 'Passwort ändern');
+const NAVBAR_TITLE_1 = 'Ihr Konto';
+const NAVBAR_TITLE_2 = 'Passwort ändern';
 
-define('HEADING_TITLE', 'Mein Passwort');
+const HEADING_TITLE = 'Mein Passwort';
 
-define('MY_PASSWORD_TITLE', 'Mein Passwort');
+const MY_PASSWORD_TITLE = 'Mein Passwort';
 
 define('SUCCESS_PASSWORD_UPDATED', 'Ihr Passwort wurde erfolgreich geändert!',
     true);

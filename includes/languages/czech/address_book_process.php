@@ -10,25 +10,25 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Můj účet');
-define('NAVBAR_TITLE_2', 'Adresář');
+const NAVBAR_TITLE_1 = 'Můj účet';
+const NAVBAR_TITLE_2 = 'Adresář';
 
-define('NAVBAR_TITLE_ADD_ENTRY', 'Nové');
-define('NAVBAR_TITLE_MODIFY_ENTRY', 'Upravit');
-define('NAVBAR_TITLE_DELETE_ENTRY', 'Smazat');
+const NAVBAR_TITLE_ADD_ENTRY = 'Nové';
+const NAVBAR_TITLE_MODIFY_ENTRY = 'Upravit';
+const NAVBAR_TITLE_DELETE_ENTRY = 'Smazat';
 
-define('HEADING_TITLE_ADD_ENTRY', 'Přidání nové adresy');
-define('HEADING_TITLE_MODIFY_ENTRY', 'Oprava vybrané adresy');
-define('HEADING_TITLE_DELETE_ENTRY', 'Smazat vybranou adresu');
+const HEADING_TITLE_ADD_ENTRY = 'Přidání nové adresy';
+const HEADING_TITLE_MODIFY_ENTRY = 'Oprava vybrané adresy';
+const HEADING_TITLE_DELETE_ENTRY = 'Smazat vybranou adresu';
 
-define('DELETE_ADDRESS_TITLE', 'Smazat adresu');
+const DELETE_ADDRESS_TITLE = 'Smazat adresu';
 define('DELETE_ADDRESS_DESCRIPTION', 'Chcete opravdu smazat vybranou adresu?',
     true);
 
-define('NEW_ADDRESS_TITLE', 'Přidat novou adresu');
+const NEW_ADDRESS_TITLE = 'Přidat novou adresu';
 
-define('SELECTED_ADDRESS', 'Vybrat adresu');
-define('SET_AS_PRIMARY', 'Nastavit jako hlavní.');
+const SELECTED_ADDRESS = 'Vybrat adresu';
+const SET_AS_PRIMARY = 'Nastavit jako hlavní.';
 
 define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Vybraná adresa byla vymazána.',
     true);
@@ -44,4 +44,4 @@ define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'Tato adresa v adresáři není.'
 define('ERROR_ADDRESS_BOOK_FULL',
     'Váš adresář je plný. Smažte některou nepoužívanou adresu a potom přidejte novou.',
     true);
-define('ENTRY_COMPANY_NUMBER','IČ');
+const ENTRY_COMPANY_NUMBER = 'IČ';

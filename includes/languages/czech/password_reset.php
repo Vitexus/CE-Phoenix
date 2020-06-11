@@ -10,12 +10,12 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Přihlášení');
-define('NAVBAR_TITLE_2', 'Zapomenuté heslo');
+const NAVBAR_TITLE_1 = 'Přihlášení';
+const NAVBAR_TITLE_2 = 'Zapomenuté heslo';
 
-define('HEADING_TITLE', 'Zapomněl jsem své heslo!');
+const HEADING_TITLE = 'Zapomněl jsem své heslo!';
 
-define('TEXT_MAIN', 'Zadejte svoje nové heslo.');
+const TEXT_MAIN = 'Zadejte svoje nové heslo.';
 
 define('TEXT_NO_RESET_LINK_FOUND',
     'Chyba: Odkaz na obnovení hesla nebyl v našich záznamech nalezen. Zkuste to prosím znovu.',

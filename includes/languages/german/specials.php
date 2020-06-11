@@ -10,6 +10,6 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Besondere Angebote');
-define('HEADING_TITLE', 'Schnell zuschlagen, so lange der Vorrat reicht!');
+const NAVBAR_TITLE = 'Besondere Angebote';
+const HEADING_TITLE = 'Schnell zuschlagen, so lange der Vorrat reicht!';
 ?>

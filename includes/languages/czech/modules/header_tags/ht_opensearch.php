@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_HEADER_TAGS_OPENSEARCH_TITLE', 'OpenSearch');
-  define('MODULE_HEADER_TAGS_OPENSEARCH_DESCRIPTION', 'Allow the browser to search the shop via OpenSearch');
+const MODULE_HEADER_TAGS_OPENSEARCH_TITLE = 'OpenSearch';
+const MODULE_HEADER_TAGS_OPENSEARCH_DESCRIPTION = 'Allow the browser to search the shop via OpenSearch';
 ?>

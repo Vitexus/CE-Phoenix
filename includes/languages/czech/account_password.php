@@ -10,14 +10,14 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Můj účet');
-define('NAVBAR_TITLE_2', 'Změna hesla');
+const NAVBAR_TITLE_1 = 'Můj účet';
+const NAVBAR_TITLE_2 = 'Změna hesla';
 
-define('HEADING_TITLE', 'Moje heslo');
+const HEADING_TITLE = 'Moje heslo';
 
-define('MY_PASSWORD_TITLE', 'Moje heslo');
+const MY_PASSWORD_TITLE = 'Moje heslo';
 
-define('SUCCESS_PASSWORD_UPDATED', 'Vaše heslo bylo úspěšně změněno.');
+const SUCCESS_PASSWORD_UPDATED = 'Vaše heslo bylo úspěšně změněno.';
 define('ERROR_CURRENT_PASSWORD_NOT_MATCHING',
     'Zadali jste chybné heslo. Zadejte jej znovu.');
 ?>

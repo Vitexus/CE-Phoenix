@@ -10,8 +10,8 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Liefer- und Versandkosten');
-define('HEADING_TITLE', 'Liefer- und Versandkosten');
+const NAVBAR_TITLE = 'Liefer- und Versandkosten';
+const HEADING_TITLE = 'Liefer- und Versandkosten';
 
 define('TEXT_INFORMATION',
     'Geben Sie Ihre Liefer- und Versandkosten  Informationen hier an');

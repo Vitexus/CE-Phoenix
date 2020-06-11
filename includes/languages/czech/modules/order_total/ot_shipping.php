@@ -10,9 +10,9 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_ORDER_TOTAL_SHIPPING_TITLE', 'Doprava');
-  define('MODULE_ORDER_TOTAL_SHIPPING_DESCRIPTION', 'Výše poštovného');
+const MODULE_ORDER_TOTAL_SHIPPING_TITLE = 'Doprava';
+const MODULE_ORDER_TOTAL_SHIPPING_DESCRIPTION = 'Výše poštovného';
 
-  define('FREE_SHIPPING_TITLE', 'Česká pošta - doprava zdarma');
-  define('FREE_SHIPPING_DESCRIPTION', '');
-//  define('FREE_SHIPPING_DESCRIPTION', 'Doprava zdarma pro objednávky nad  %s');
+const FREE_SHIPPING_TITLE = 'Česká pošta - doprava zdarma';
+const FREE_SHIPPING_DESCRIPTION = '';
+const FREE_SHIPPING_DESCRIPTION = 'Doprava zdarma pro objednávky nad  %s';

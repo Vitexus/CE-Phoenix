@@ -10,21 +10,21 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Kasse');
-define('NAVBAR_TITLE_2', 'Versandinformationen');
+const NAVBAR_TITLE_1 = 'Kasse';
+const NAVBAR_TITLE_2 = 'Versandinformationen';
 
-define('HEADING_TITLE', 'Versandinformationen');
+const HEADING_TITLE = 'Versandinformationen';
 
-define('TABLE_HEADING_SHIPPING_ADDRESS', 'Versandadresse');
+const TABLE_HEADING_SHIPPING_ADDRESS = 'Versandadresse';
 define('TEXT_CHOOSE_SHIPPING_DESTINATION',
     'Bitte wählen Sie aus Ihrem Adressbuch die gewünschte Versandadresse für Ihre Bestellung aus.',
     true);
-define('TITLE_SHIPPING_ADDRESS', 'Versandadresse:');
+const TITLE_SHIPPING_ADDRESS = 'Versandadresse:';
 
-define('TABLE_HEADING_SHIPPING_METHOD', 'Versandart');
+const TABLE_HEADING_SHIPPING_METHOD = 'Versandart';
 define('TEXT_CHOOSE_SHIPPING_METHOD',
     'Bitte wählen Sie die gewünschte Versandart für Ihre Bestellung aus.');
-define('TITLE_PLEASE_SELECT', 'Bitte wählen Sie');
+const TITLE_PLEASE_SELECT = 'Bitte wählen Sie';
 define('TEXT_ENTER_SHIPPING_INFORMATION',
     'Zur Zeit bieten wir Ihnen nur eine Versandart an.');
 

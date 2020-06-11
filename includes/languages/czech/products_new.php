@@ -10,12 +10,12 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Novinky');
-define('HEADING_TITLE', 'Novinky');
+const NAVBAR_TITLE = 'Novinky';
+const HEADING_TITLE = 'Novinky';
 
-define('TEXT_DATE_ADDED', 'Přidáno:');
-define('TEXT_MANUFACTURER', 'Výrobce:');
-define('TEXT_PRICE', 'Cena:');
+const TEXT_DATE_ADDED = 'Přidáno:';
+const TEXT_MANUFACTURER = 'Výrobce:';
+const TEXT_PRICE = 'Cena:';
 
-define('TEXT_NO_PRODUCTS', 'žádné nové produkty');
+const TEXT_NO_PRODUCTS = 'žádné nové produkty';
 

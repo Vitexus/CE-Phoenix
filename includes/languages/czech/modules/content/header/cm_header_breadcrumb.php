@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_CONTENT_HEADER_BREADCRUMB_TITLE', 'Breadcrumb');
-  define('MODULE_CONTENT_HEADER_BREADCRUMB_DESCRIPTION', 'Adds a Breadrcumb Trail into the Header Area of your site.');
+const MODULE_CONTENT_HEADER_BREADCRUMB_TITLE = 'Breadcrumb';
+const MODULE_CONTENT_HEADER_BREADCRUMB_DESCRIPTION = 'Adds a Breadrcumb Trail into the Header Area of your site.';
 

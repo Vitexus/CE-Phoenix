@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-define('MODULE_SHIPPING_ITEM_TEXT_TITLE', 'Per Item');
-define('MODULE_SHIPPING_ITEM_TEXT_DESCRIPTION', 'Per Item');
-define('MODULE_SHIPPING_ITEM_TEXT_WAY', '');
+const MODULE_SHIPPING_ITEM_TEXT_TITLE = 'Per Item';
+const MODULE_SHIPPING_ITEM_TEXT_DESCRIPTION = 'Per Item';
+const MODULE_SHIPPING_ITEM_TEXT_WAY = '';
 ?>

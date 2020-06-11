@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_HEADER_TAGS_CANONICAL_TITLE', 'Canonical Header Links');
-  define('MODULE_HEADER_TAGS_CANONICAL_DESCRIPTION', 'Add header canonical links to category and product pages');
+const MODULE_HEADER_TAGS_CANONICAL_TITLE = 'Canonical Header Links';
+const MODULE_HEADER_TAGS_CANONICAL_DESCRIPTION = 'Add header canonical links to category and product pages';
 ?>

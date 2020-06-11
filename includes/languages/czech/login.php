@@ -10,5 +10,5 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Přihlášení');
-define('HEADING_TITLE', 'Přihlášení');
+const NAVBAR_TITLE = 'Přihlášení';
+const HEADING_TITLE = 'Přihlášení';

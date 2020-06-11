@@ -10,14 +10,14 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Můj účet');
-define('NAVBAR_TITLE_2', 'Zasílání novinek');
+const NAVBAR_TITLE_1 = 'Můj účet';
+const NAVBAR_TITLE_2 = 'Zasílání novinek';
 
-define('HEADING_TITLE', 'Zasílání novinek');
+const HEADING_TITLE = 'Zasílání novinek';
 
-define('MY_NEWSLETTERS_GENERAL_NEWSLETTER', 'Zasílat novinky');
+const MY_NEWSLETTERS_GENERAL_NEWSLETTER = 'Zasílat novinky';
 define('MY_NEWSLETTERS_GENERAL_NEWSLETTER_DESCRIPTION',
     'Zasílání novinek, nových produktů, speciálních nabídek, atd.');
 
-define('SUCCESS_NEWSLETTER_UPDATED', 'Změna v zasílání novinek potvrzena.');
+const SUCCESS_NEWSLETTER_UPDATED = 'Změna v zasílání novinek potvrzena.';
 ?>

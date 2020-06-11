@@ -10,15 +10,15 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_TITLE', 'Blok můj čet');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_DESCRIPTION', 'Přidat blk účet do patičky webu');
+const MODULE_CONTENT_FOOTER_ACCOUNT_TITLE = 'Blok můj čet';
+const MODULE_CONTENT_FOOTER_ACCOUNT_DESCRIPTION = 'Přidat blk účet do patičky webu';
 
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_HEADING_TITLE', 'Služby');
+const MODULE_CONTENT_FOOTER_ACCOUNT_HEADING_TITLE = 'Služby';
 
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ACCOUNT', 'Můj účet');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ADDRESS_BOOK', 'Můj adresář');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ORDER_HISTORY', 'Moje historie objednávek');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_LOGOFF', 'Bezpečně odhlásit');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_CREATE_ACCOUNT', 'Vytvořit účet');
-  define('MODULE_CONTENT_FOOTER_ACCOUNT_BOX_LOGIN', 'Již mám účet? Přihlásit');
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ACCOUNT = 'Můj účet';
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ADDRESS_BOOK = 'Můj adresář';
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_ORDER_HISTORY = 'Moje historie objednávek';
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_LOGOFF = 'Bezpečně odhlásit';
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_CREATE_ACCOUNT = 'Vytvořit účet';
+const MODULE_CONTENT_FOOTER_ACCOUNT_BOX_LOGIN = 'Již mám účet? Přihlásit';
 

@@ -10,8 +10,8 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_BOXES_SHOPPING_CART_TITLE', 'Nákupní košík');
-  define('MODULE_BOXES_SHOPPING_CART_DESCRIPTION', 'obsah košíku');
-  define('MODULE_BOXES_SHOPPING_CART_BOX_TITLE', 'Nákupní košík');
-  define('MODULE_BOXES_SHOPPING_CART_BOX_CART_EMPTY', '0 položek');
+const MODULE_BOXES_SHOPPING_CART_TITLE = 'Nákupní košík';
+const MODULE_BOXES_SHOPPING_CART_DESCRIPTION = 'obsah košíku';
+const MODULE_BOXES_SHOPPING_CART_BOX_TITLE = 'Nákupní košík';
+const MODULE_BOXES_SHOPPING_CART_BOX_CART_EMPTY = '0 položek';
 

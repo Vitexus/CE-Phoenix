@@ -10,9 +10,9 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE_1', 'Dodávka');
-define('NAVBAR_TITLE_2', 'v pořádku');
+const NAVBAR_TITLE_1 = 'Dodávka';
+const NAVBAR_TITLE_2 = 'v pořádku';
 
-define('HEADING_TITLE', 'Vaše objednávka byla přijata');
+const HEADING_TITLE = 'Vaše objednávka byla přijata';
 
-define('TABLE_HEADING_COMMENTS', 'Můžete napsat komentář');
+const TABLE_HEADING_COMMENTS = 'Můžete napsat komentář';

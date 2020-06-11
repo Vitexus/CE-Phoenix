@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-define('MODULE_SHIPPING_FLAT_TEXT_TITLE', 'Poštou na dobírku');
-define('MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION', 'Na dobírku');
-define('MODULE_SHIPPING_FLAT_TEXT_WAY', '');
+const MODULE_SHIPPING_FLAT_TEXT_TITLE = 'Poštou na dobírku';
+const MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION = 'Na dobírku';
+const MODULE_SHIPPING_FLAT_TEXT_WAY = '';
 ?>

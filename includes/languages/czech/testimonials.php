@@ -10,8 +10,8 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Doporučení');
-define('HEADING_TITLE', 'Doporučení zákazníků');
+const NAVBAR_TITLE = 'Doporučení';
+const HEADING_TITLE = 'Doporučení zákazníků';
 
-define('TEXT_NO_TESTIMONIALS', 'Neobsahuje žádná doporučení zákazníků.');
+const TEXT_NO_TESTIMONIALS = 'Neobsahuje žádná doporučení zákazníků.';
 

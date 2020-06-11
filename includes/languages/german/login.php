@@ -10,17 +10,17 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Anmelden');
-define('HEADING_TITLE', 'Willkommen, melden Sie sich an');
+const NAVBAR_TITLE = 'Anmelden';
+const HEADING_TITLE = 'Willkommen, melden Sie sich an';
 
-define('HEADING_NEW_CUSTOMER', 'Neuer Kunde');
-define('TEXT_NEW_CUSTOMER', 'Ich bin ein neuer Kunde.');
+const HEADING_NEW_CUSTOMER = 'Neuer Kunde';
+const TEXT_NEW_CUSTOMER = 'Ich bin ein neuer Kunde.';
 define('TEXT_NEW_CUSTOMER_INTRODUCTION',
     'Durch Ihre Anmeldung bei '.STORE_NAME.' sind Sie in der Lage schneller zu bestellen, kennen jederzeit den Status Ihrer Bestellungen und haben immer eine aktuelle übersicht über Ihre bisherigen Bestellungen.',
     true);
 
-define('HEADING_RETURNING_CUSTOMER', 'Bereits Kunde');
-define('TEXT_RETURNING_CUSTOMER', 'Ich bin bereits Kunde.');
+const HEADING_RETURNING_CUSTOMER = 'Bereits Kunde';
+const TEXT_RETURNING_CUSTOMER = 'Ich bin bereits Kunde.';
 
 define('TEXT_PASSWORD_FORGOTTEN',
     'Sie haben Ihr Passwort vergessen? Dann klicken Sie <u>hier</u>');

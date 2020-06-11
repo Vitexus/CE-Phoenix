@@ -10,8 +10,8 @@
   Released under the GNU General Public License
  */
 
-define('NAVBAR_TITLE', 'Podmínky použití');
-define('HEADING_TITLE', 'Podmínky použití');
+const NAVBAR_TITLE = 'Podmínky použití';
+const HEADING_TITLE = 'Podmínky použití';
 
-define('TEXT_INFORMATION', 'Informace.');
+const TEXT_INFORMATION = 'Informace.';
 ?>
