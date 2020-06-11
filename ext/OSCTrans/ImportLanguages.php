@@ -9,7 +9,7 @@ class ImportLanguages {
      * Source Shop catalog location
      * @var string path 
      */
-    public $oscLocation = '/home/vitex/Projects/PureHTML/yin20/WWW/osc/catalog';
+    public $oscLocation = '';
 
     /**
      * Destination
@@ -48,26 +48,34 @@ class ImportLanguages {
     public function importLanguage($lng) {
         $srcDir = $this->oscLocation . '/includes/languages/' . $lng;
         $candidates = $this->translationFiles($srcDir);
-        $destDir = $this->phxLocation.'/includes/languages/'.$lng;
-        if(!file_exists($destDir)){
+        $destDir = $this->phxLocation . '/includes/languages/' . $lng;
+        if (!file_exists($destDir)) {
             mkdir($destDir);
         }
         foreach ($this->translationsList as $weWant) {
-            $trfile = $destDir.'/' . $weWant;
-            if (array_key_exists(  $weWant, $candidates)) {
-                if(file_exists( $trfile )){
-                    echo $weWant . '  :O';
+            $srcFile = $srcDir . '/' . $weWant;
+            $destFile = $destDir . '/' . $weWant;
+
+            if (is_dir(dirname($srcFile)) && !is_dir(dirname($destFile)) ) {
+                if(!mkdir(dirname($destFile), 0777, true)){
+                   echo 'cannot mkdir  ' . dirname($destFile);
+                }
+            }
+
+            if (array_key_exists($weWant, $candidates)) {
+                if (file_exists($destFile)) {
+                    echo '  :O';
                 } else {
-                    if(copy($srcDir.'/'.$weWant, $trfile)) {
-                        echo $weWant . ' :)';
+                    if (copy($srcFile, $destFile)) {
+                        echo ' :)';
                     } else {
-                        echo $weWant . ' :/';
+                        echo ' :/';
                     }
                 }
             } else {
-                echo $weWant . ':( ';
+                echo ':( ';
             }
-            echo "\n<br>";
+            echo ' ' . $weWant . " \n<br>";
         }
     }
 
@@ -90,4 +98,4 @@ class ImportLanguages {
 
 }
 
-(new ImportLanguages(['czech', 'german', 'fracois']));
+//(new ImportLanguages('/home/vitex/Projects/PureHTML/yin20/WWW/osc/catalog',['czech', 'german', 'french']));
