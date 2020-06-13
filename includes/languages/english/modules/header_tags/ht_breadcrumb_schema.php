@@ -10,6 +10,6 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_HEADER_TAGS_BREADCRUMB_SCHEMA_TITLE', 'Breadcrumb Schema JSON-LD');
-  define('MODULE_HEADER_TAGS_BREADCRUMB_SCHEMA_DESCRIPTION', 'Add Breadcrumb Schema JSON-LD to all pages.');
+  const MODULE_HEADER_TAGS_BREADCRUMB_SCHEMA_TITLE = 'Breadcrumb Schema JSON-LD';
+  const MODULE_HEADER_TAGS_BREADCRUMB_SCHEMA_DESCRIPTION = 'Přidat Breadcrumb Schema JSON-LD do všech stránek.';
   
