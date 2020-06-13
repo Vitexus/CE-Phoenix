@@ -262,7 +262,7 @@ const REVIEWS_TEXT_AVERAGE = 'Hodnocení <span itemprop="počet">%s</span> recen
 const REVIEWS_TEXT_TITLE = 'Co říkají naši zákazníci...';
 
 // grid/list
-
+const TEXT_SORT_BY = 'Třídit dle ';
 // moved from index
 const TABLE_HEADING_IMAGE = '';
 const TABLE_HEADING_MODEL = 'Model';
@@ -276,6 +276,10 @@ const TABLE_HEADING_LATEST_ADDED = 'Poslední zboží';
 const TABLE_HEADING_DATE_AVAILABLE = 'Nejnovější zboží';
 const TABLE_HEADING_CUSTOM_DATE = 'Podle data';
 const TABLE_HEADING_SORT_ORDER = 'Pořadí';
+
+
+const TABLE_HEADING_ORDERED = 'Most Popular';
+
 
 // product notifications
 const PRODUCT_SUBSCRIBED = '%s bylo přidána do vašeho seznamu';
@@ -397,6 +401,12 @@ const QUICK_SHOP_PAGE = 'quick-shop';
 const PASSWORD = 'Heslo';
 const LOGIN = 'Přihlášení';
 
+// sitewide product listing
+const LISTING_SORT_DOWN = '<i class="fas fa-level-down-alt text-primary"></i>';
+const LISTING_SORT_UP = '<i class="fas fa-level-up-alt text-primary"></i>';
+const LISTING_SORT_UNSELECTED = '<i class="fas fa-level-up-alt text-black-50"></i>';
+
+
 // sitewide is-product
 const IS_PRODUCT_SHOW_PRICE = '%s';
 const IS_PRODUCT_SHOW_PRICE_SPECIAL = '<del>%s</del> <span class="text-danger">nyní %s</span>';
@@ -409,3 +419,13 @@ const TEXT_NOSCRIPT = <<<'EOT'
 <p>Musíte  mít JavaScript povolený ve svém prohlížeči pro zajištění funkcionalitý těchto stránke.<br>
 <a class="alert-link" href="https://www.enable-javascript.com/" target="_blank" rel="nofollow">Klikněte zde pro návod jak povolit javaskript ve vašem prohlížeči</a>.</p>
 EOT;
+
+// for new style internal pages
+const LINK_TEXT_EDIT = '<small><a class="%s" href="%s">Upravit</a></small>';
+const SHIPPING_FA_ICON = '<i class="fas fa-shipping-fast fa-fw fa-3x float-right text-black-50"></i>';
+const PAYMENT_FA_ICON = '<i class="fas fa-file-invoice-dollar fa-fw fa-3x float-right text-black-50"></i>';
+
+
+const ENTRY_COMMENTS = 'Potřebujete něco vědět?';
+const ENTRY_COMMENTS_PLACEHOLDER = 'Vaše poznámka ...';
+const TABLE_HEADING_OR = '-nebo-';

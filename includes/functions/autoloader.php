@@ -119,6 +119,9 @@
         $language_file = DIR_FS_CATALOG . "includes/languages/$language/modules" . substr($class_files[$class], $modules_directory_length);
         if (file_exists($language_file)) {
           include $language_file;
+        } else {
+            $fallback_language_file = DIR_FS_CATALOG . "includes/languages/english/modules" . substr($class_files[$class], $modules_directory_length);
+            echo "<br> mkdir -p ". dirname($language_file) ."<br>  cp " .$fallback_language_file .' ' .$language_file.' <br>';
         }
       }
 
