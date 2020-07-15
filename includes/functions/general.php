@@ -111,7 +111,7 @@
     $product_query = tep_db_query("SELECT specials_new_products_price FROM specials WHERE products_id = " . (int)$product_id . " AND status = 1");
     $product = tep_db_fetch_array($product_query);
 
-    return $product['specials_new_products_price'];
+    return $product['specials_new_products_price'] ?? null;
   }
 
 ////
@@ -988,4 +988,13 @@
       $_SESSION['navigation']->set_snapshot($parameters);
       tep_redirect(tep_href_link('login.php', '', 'SSL'));
     }
+  }
+
+  function tep_ltrim_once($s, $prefix) {
+    $length = strlen($prefix);
+    if (substr($s, 0, $length) === $prefix) {
+      return substr($s, $length);
+    }
+
+    return $s;
   }

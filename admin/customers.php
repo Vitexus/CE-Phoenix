@@ -41,7 +41,11 @@
           } else {
             require 'includes/functions/password_funcs.php';
           }
-          $customer_data->update($customer_details, ['id' => $customer_details['id']]);
+
+          $customer_data->update($customer_details, [
+            'id' => $customer_details['id'],
+            'address_book_id' => (int)$_POST['default_address_id'],
+          ]);
           tep_db_query("UPDATE customers_info SET customers_info_date_account_last_modified = NOW() WHERE customers_info_id = " . (int)$customer_details['id']);
 
           $OSCOM_Hooks->call('customers', 'updateAction');
@@ -68,7 +72,7 @@
         tep_db_query("DELETE FROM customers_basket_attributes WHERE customers_id = " . (int)$customers_id);
         tep_db_query("DELETE FROM whos_online WHERE customer_id = " . (int)$customers_id);
 
-        $OSCOM_Hooks->call('customers', 'deleteconfirmAction');
+        $OSCOM_Hooks->call('customers', 'deleteConfirmAction');
 
         tep_redirect(tep_href_link('customers.php', tep_get_all_get_params(['cID', 'action'])));
         break;
@@ -89,7 +93,9 @@
     </div>
     <div class="col text-right align-self-center">
       <?php
-      if (!isset($_GET['action'])) {
+      if (isset($_GET['action'])) {
+        echo tep_draw_bootstrap_button(IMAGE_CANCEL, 'fas fa-angle-left', tep_href_link('customers.php', tep_get_all_get_params(['action'])), null, null, 'btn-light');
+      } else {
         echo tep_draw_form('search', 'customers.php', '', 'get');
           echo '<div class="input-group">';
             echo '<div class="input-group-prepend">';
@@ -100,22 +106,16 @@
           echo tep_hide_session_id();
         echo '</form>';
       }
-      else {
-        echo tep_draw_bootstrap_button(IMAGE_CANCEL, 'fas fa-angle-left', tep_href_link('customers.php', tep_get_all_get_params(array('action'))), null, null, 'btn-light');
-      }
       ?>
     </div>
   </div>
 
   <?php
   if ($action == 'edit' || $action == 'update') {
-    ?>
-
-  <div class="contentContainer">
-    <?php
+    $hooks =& $OSCOM_Hooks;
     $oscTemplate = new oscTemplate();
     echo tep_draw_form('customers', 'customers.php', tep_get_all_get_params(['action']) . 'action=update', 'post');
-    echo tep_draw_hidden_field('default_address_id', $customer_data->get('address_id', $customer_details));
+    echo tep_draw_hidden_field('default_address_id', $customer_data->get('default_address_id', $customer_details));
 
     $cwd = getcwd();
     chdir(DIR_FS_CATALOG);
@@ -153,7 +153,7 @@ EOSQL
     ?>
 
   </form>
-</div>
+
 <?php
   } else {
 ?>

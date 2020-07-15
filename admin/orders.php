@@ -63,7 +63,7 @@
           $order_updated = true;
         }
         
-        $OSCOM_Hooks->call('orders', 'updateorderAction');
+        $OSCOM_Hooks->call('orders', 'updateOrderAction');
 
         if ($order_updated == true) {
          $messageStack->add_session(SUCCESS_ORDER_UPDATED, 'success');
@@ -78,7 +78,7 @@
 
         tep_remove_order($oID, $_POST['restock']);
 
-        $OSCOM_Hooks->call('orders', 'deleteconfirmAction');
+        $OSCOM_Hooks->call('orders', 'deleteConfirmAction');
 
         tep_redirect(tep_href_link('orders.php', tep_get_all_get_params(['oID', 'action'])));
         break;
@@ -219,7 +219,7 @@
           <div class="form-group row">
             <label for="oStatus" class="col-form-label col-sm-3 text-left text-sm-right"><?php echo ENTRY_STATUS; ?></label>
             <div class="col-sm-9">
-              <?php echo tep_draw_pull_down_menu('status', $orders_statuses, $order->info['oid'], 'id="oStatus" class="form-control"'); ?>
+              <?php echo tep_draw_pull_down_menu('status', $orders_statuses, $order->info['orders_status_id'], 'id="oStatus" class="form-control"'); ?>
             </div>
           </div>
 
@@ -247,7 +247,7 @@
           </div>
           
           <?php
-          echo $OSCOM_Hooks->call('orders', 'sectionstatushistorycontentForm');
+          echo $OSCOM_Hooks->call('orders', 'sectionStatusHistoryContentForm');
           ?>
           
           <p><?php echo tep_draw_bootstrap_button(IMAGE_SAVE, 'fas fa-save', null, 'primary', null, 'btn-success btn-block btn-lg'); ?></p>
