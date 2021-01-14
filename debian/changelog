@@ -1,0 +1,11 @@
+ce-phoenix (1.0.7.3) UNRELEASED; urgency=medium
+
+  * repack
+
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 01 Aug 2020 19:52:28 +0200
+
+ce-phoenix (1.0.7.2) experimental; urgency=medium
+
+  * Initial Packaging
+
+ -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 01 Aug 2020 17:17:23 +0200
