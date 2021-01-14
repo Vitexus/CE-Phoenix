@@ -47,7 +47,7 @@
           'title' => 'Autocomplete',
           'value' => 'address-line2',
           'desc' => 'How do you want the suburb to be autocompleted?',
-          'set_func' => "tep_cfg_select_option(['address-level3', 'address-line2'], ",
+          'set_func' => "tep_cfg_select_option(['address-level3', 'address-line2', 'off'], ",
         ],
         static::CONFIG_KEY_BASE . 'PAGES' => [
           'title' => 'Pages',
@@ -85,7 +85,7 @@
 
       $input_id = 'inputSuburb';
       $attribute = 'id="' . $input_id
-                 . '" autocomplete="' . MODULE_CUSTOMER_DATA_SUBURB_AUTOCOMPLETE
+                 . '" autocomplete="' . $this->base_constant('AUTOCOMPLETE')
                  . '" placeholder="' . ENTRY_SUBURB_TEXT . '"';
 
       $postInput = '';
@@ -102,13 +102,13 @@
       $input = tep_draw_input_field('suburb', $suburb, $attribute)
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_SUBURB_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function process(&$customer_details) {
       $customer_details['suburb'] = tep_db_prepare_input($_POST['suburb']);
 
-      if (strlen($customer_details['suburb']) < MODULE_CUSTOMER_DATA_SUBURB_MIN_LENGTH
+      if (strlen($customer_details['suburb']) < $this->base_constant('MIN_LENGTH')
         && ($this->is_required()
           || !empty($customer_details['suburb'])
           )
@@ -116,7 +116,7 @@
       {
         $GLOBALS['messageStack']->add_classed(
           $GLOBALS['message_stack_area'] ?? 'customer_data',
-          sprintf(ENTRY_SUBURB_ERROR, MODULE_CUSTOMER_DATA_SUBURB_MIN_LENGTH));
+          sprintf(ENTRY_SUBURB_ERROR, $this->base_constant('MIN_LENGTH')));
 
         return false;
       }
@@ -125,12 +125,12 @@
     }
 
     public function build_db_values(&$db_tables, $customer_details, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'address_book');
+      Guarantor::guarantee_subarray($db_tables, 'address_book');
       $db_tables['address_book']['entry_suburb'] = $customer_details['suburb'];
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'address_book');
+      Guarantor::guarantee_subarray($db_tables, 'address_book');
       $db_tables['address_book']['entry_suburb'] = 'suburb';
     }
 

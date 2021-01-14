@@ -17,19 +17,15 @@
     exit;
   }
 
-  require 'includes/modules/payment/paypal_standard.php';
-
-  $payment = 'paypal_standard';
-  $$payment = new paypal_standard();
-
-  require DIR_FS_CATALOG . "includes/languages/$language/checkout_process.php";
+  $_SESSION['payment'] = 'paypal_standard';
+  $paypal_standard = new paypal_standard();
 
   $result = false;
 
-  $seller_accounts = [$$payment->_app->getCredentials('PS', 'email')];
+  $seller_accounts = [$paypal_standard->_app->getCredentials('PS', 'email')];
 
-  if ( tep_not_null($$payment->_app->getCredentials('PS', 'email_primary')) ) {
-    $seller_accounts[] = $$payment->_app->getCredentials('PS', 'email_primary');
+  if ( tep_not_null($paypal_standard->_app->getCredentials('PS', 'email_primary')) ) {
+    $seller_accounts[] = $paypal_standard->_app->getCredentials('PS', 'email_primary');
   }
 
   if ( (isset($_POST['receiver_email']) && in_array($_POST['receiver_email'], $seller_accounts)) || (isset($_POST['business']) && in_array($_POST['business'], $seller_accounts)) ) {
@@ -41,9 +37,9 @@
       }
     }
 
-    $parameters = substr($parameters, 0, -1);
+    $parameters = substr($parameters, 0, -strlen('&'));
 
-    $result = $$payment->_app->makeApiCall($$payment->form_action_url, $parameters);
+    $result = $paypal_standard->_app->makeApiCall($paypal_standard->form_action_url, $parameters);
   }
 
   $log_params = [];
@@ -56,14 +52,14 @@
     $log_params['GET ' . $key] = stripslashes($value);
   }
 
-  $$payment->_app->log('PS', '_notify-validate', ($result == 'VERIFIED') ? 1 : -1, $log_params, $result, (OSCOM_APP_PAYPAL_PS_STATUS == '1') ? 'live' : 'sandbox', true);
+  $paypal_standard->_app->log('PS', '_notify-validate', ($result == 'VERIFIED') ? 1 : -1, $log_params, $result, (OSCOM_APP_PAYPAL_PS_STATUS == '1') ? 'live' : 'sandbox', true);
 
   if ( $result == 'VERIFIED' ) {
-    $$payment->verifyTransaction($_POST, true);
+    $paypal_standard->verifyTransaction($_POST, true);
 
     $order_id = (int)$_POST['invoice'];
     $customer_id = (int)$_POST['custom'];
-    if (!($customer instanceof customer)) {
+    if (!($customer instanceof customer) || ($customer_id != $customer->get_id())) {
       $customer = new customer($customer_id);
     }
 
@@ -71,27 +67,16 @@
 
     if ($check = tep_db_fetch_array($check_query)) {
       if ( $check['orders_status'] == OSCOM_APP_PAYPAL_PS_PREPARE_ORDER_STATUS_ID ) {
-        $new_order_status = DEFAULT_ORDERS_STATUS_ID;
+        $order = new order($order_id);
+        $order->info['order_status'] = DEFAULT_ORDERS_STATUS_ID;
 
         if ( OSCOM_APP_PAYPAL_PS_ORDER_STATUS_ID > 0 ) {
-          $new_order_status = OSCOM_APP_PAYPAL_PS_ORDER_STATUS_ID;
+          $order->info['order_status'] = OSCOM_APP_PAYPAL_PS_ORDER_STATUS_ID;
         }
 
-        tep_db_query("UPDATE orders SET orders_status = " . (int)$new_order_status . ", last_modified = NOW() WHERE orders_id = " . (int)$order_id);
+        tep_db_query("UPDATE orders SET orders_status = " . (int)$order->info['order_status'] . ", last_modified = NOW() WHERE orders_id = " . (int)$order_id);
 
-        $sql_data = [
-          'orders_id' => $order_id,
-          'orders_status_id' => (int)$new_order_status,
-          'date_added' => 'NOW()',
-          'customer_notified' => (SEND_EMAILS == 'true') ? '1' : '0',
-          'comments' => '',
-        ];
-
-        tep_db_perform('orders_status_history', $sql_data);
-
-        $order = new order($order_id);
-
-        if (DOWNLOAD_ENABLED == 'true') {
+        if ('true' === DOWNLOAD_ENABLED) {
           $downloads_query = tep_db_query("SELECT opd.orders_products_filename FROM orders o, orders_products op, orders_products_download opd WHERE o.orders_id = " . (int)$order_id . " AND o.customers_id = " . (int)$customer_id . " AND o.orders_id = op.orders_id AND op.orders_products_id = opd.orders_products_id AND opd.orders_products_filename != ''");
 
           switch (tep_db_num_rows($downloads_query)) {
@@ -108,12 +93,15 @@
           $order->content_type = 'physical';
         }
 
-        include 'includes/modules/checkout/after.php';
+        $hooks->register_pipeline('after');
+        include 'includes/system/segments/checkout/insert_history.php';
 
         tep_db_query("DELETE FROM customers_basket WHERE customers_id = " . (int)$customer_id);
         tep_db_query("DELETE FROM customers_basket_attributes WHERE customers_id = " . (int)$customer_id);
       }
     }
   }
+
+  tep_session_destroy();
 
   require 'includes/application_bottom.php';

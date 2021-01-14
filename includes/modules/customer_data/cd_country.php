@@ -86,11 +86,13 @@
             ?? $customer_details['countries_name'] ?? null;
           return $customer_details[$field];
         case 'country_iso_code_3':
-          return $customer_details['country']['iso_code_3']
+          $customer_details[$field] = $customer_details['country']['iso_code_3']
             ?? $customer_details['countries_iso_code_3'] ?? null;
+          return $customer_details[$field];
         case 'country_iso_code_2':
-          return $customer_details['country']['iso_code_2']
+          $customer_details[$field] = $customer_details['country']['iso_code_2']
             ?? $customer_details['countries_iso_code_2'] ?? null;
+          return $customer_details[$field];
         case 'address_format_id':
         case 'format_id':
           $customer_details[$field] = $customer_details['format_id']
@@ -109,7 +111,8 @@
 
           if (isset($customer_details['country']['id']) && 6 > count(array_filter($customer_details['country'], function ($v) { return isset($v); }))) {
             $countries_query = tep_db_query("SELECT * FROM countries WHERE countries_id = " . (int)$customer_details['country_id']);
-            $customer_details['country'] = $this->get('country', tep_db_fetch_array($countries_query));
+            $country = tep_db_fetch_array($countries_query);
+            $customer_details['country'] = $this->get('country', $country);
           }
           return $customer_details[$field];
       }
@@ -139,7 +142,7 @@
       $input = $this->draw_country_list('country_id', $country_id, $attribute)
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_COUNTRY_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function process(&$customer_details) {
@@ -159,18 +162,18 @@
 
     public function build_db_values(&$db_tables, $customer_details, $table = 'both') {
       $country_id = $GLOBALS['customer_data']->get('country_id', $customer_details);
-      tep_guarantee_subarray($db_tables, 'address_book');
+      Guarantor::guarantee_subarray($db_tables, 'address_book');
       $db_tables['address_book']['entry_country_id'] = $country_id;
       if ('countries' === $table) {
-        tep_guarantee_subarray($db_tables, 'countries');
+        Guarantor::guarantee_subarray($db_tables, 'countries');
         $db_tables['countries']['countries_id'] = $country_id;
       }
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'address_book');
+      Guarantor::guarantee_subarray($db_tables, 'address_book');
       $db_tables['address_book']['entry_country_id'] = 'country_id';
-      tep_guarantee_subarray($db_tables, 'countries');
+      Guarantor::guarantee_subarray($db_tables, 'countries');
       $db_tables['countries'] = [];
     }
 

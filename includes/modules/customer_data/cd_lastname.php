@@ -92,7 +92,7 @@
       $input = tep_draw_input_field('lastname', $lastname, $attribute)
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_LASTNAME_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function process(&$customer_details) {
@@ -114,24 +114,24 @@
 
     public function build_db_values(&$db_tables, $customer_details, $table = 'both') {
       if ('both' == $table || 'customers' == $table) {
-        tep_guarantee_subarray($db_tables, 'customers');
+        Guarantor::guarantee_subarray($db_tables, 'customers');
         $db_tables['customers']['customers_lastname'] = $customer_details['lastname'];
       }
 
       if ('both' == $table || 'address_book' == $table) {
-        tep_guarantee_subarray($db_tables, 'address_book');
+        Guarantor::guarantee_subarray($db_tables, 'address_book');
         $db_tables['address_book']['entry_lastname'] = $customer_details['lastname'];
       }
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
       if ('both' == $table || 'customers' == $table) {
-        tep_guarantee_subarray($db_tables, 'customers');
+        Guarantor::guarantee_subarray($db_tables, 'customers');
         $db_tables['customers']['customers_lastname'] = 'lastname';
       }
 
       if ('both' == $table || 'address_book' == $table) {
-        tep_guarantee_subarray($db_tables, 'address_book');
+        Guarantor::guarantee_subarray($db_tables, 'address_book');
         $db_tables['address_book']['entry_lastname'] = (isset($db_tables['customers']['customers_lastname'])) ? null : 'lastname';
       }
     }

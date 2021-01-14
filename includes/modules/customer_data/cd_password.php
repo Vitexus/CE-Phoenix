@@ -94,13 +94,13 @@
       $input = tep_draw_input_field('password', null, $attribute, 'password')
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_PASSWORD_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function process(&$customer_details, $entry_base = 'ENTRY_PASSWORD') {
       $customer_details['password'] = tep_db_prepare_input($_POST['password']);
 
-      if (strlen($customer_details['password']) < MODULE_CUSTOMER_DATA_PASSWORD_MIN_LENGTH
+      if (strlen($customer_details['password']) < $this->base_constant('MIN_LENGTH')
         && ($this->is_required()
           || !empty($customer_details['password'])
           )
@@ -108,7 +108,7 @@
       {
         $GLOBALS['messageStack']->add_classed(
           $GLOBALS['message_stack_area'] ?? 'customer_data',
-          sprintf(constant($entry_base . '_ERROR'), MODULE_CUSTOMER_DATA_PASSWORD_MIN_LENGTH));
+          sprintf(constant($entry_base . '_ERROR'), $this->base_constant('MIN_LENGTH')));
 
         return false;
       }
@@ -121,12 +121,12 @@
         return;
       }
 
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_password'] = tep_encrypt_password($customer_details['password']);
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_password'] = 'password';
     }
 

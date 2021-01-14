@@ -42,7 +42,7 @@
       $order_query = tep_db_query("SELECT * FROM orders WHERE orders_id = " . (int)$this->id);
       $order = tep_db_fetch_array($order_query);
 
-      $order_status_query = tep_db_query("SELECT orders_status_name FROM orders_status WHERE orders_status_id = " . $order['orders_status'] . " AND language_id = " . (int)$_SESSION['languages_id']);
+      $order_status_query = tep_db_query("SELECT orders_status_name FROM orders_status WHERE orders_status_id = " . (int)$order['orders_status'] . " AND language_id = " . (int)$_SESSION['languages_id']);
       $order_status = tep_db_fetch_array($order_status_query);
 
       $this->info = [
@@ -51,6 +51,7 @@
         'payment_method' => $order['payment_method'],
         'date_purchased' => $order['date_purchased'],
         'orders_status' => $order_status['orders_status_name'],
+        'orders_status_id' => $order['orders_status'],
         'last_modified' => $order['last_modified'],
       ];
 
@@ -123,6 +124,7 @@
           'tax' => $orders_products['products_tax'],
           'price' => $orders_products['products_price'],
           'final_price' => $orders_products['final_price'],
+          'orders_products_id' => $orders_products['orders_products_id'],
         ];
 
         $attributes_query = tep_db_query("SELECT products_options, products_options_values, options_values_price, price_prefix FROM orders_products_attributes WHERE orders_id = " . (int)$this->id . " AND orders_products_id = " . (int)$orders_products['orders_products_id']);
@@ -150,16 +152,16 @@
         'order_status' => DEFAULT_ORDERS_STATUS_ID,
         'currency' => $_SESSION['currency'],
         'currency_value' => $currencies->currencies[$_SESSION['currency']]['value'],
-        'payment_method' => $_SESSION['payment'],
-        'shipping_method' => $_SESSION['shipping']['title'],
-        'shipping_cost' => $_SESSION['shipping']['cost'],
+        'payment_method' => $_SESSION['payment'] ?? null,
+        'shipping_method' => $_SESSION['shipping']['title'] ?? null,
+        'shipping_cost' => $_SESSION['shipping']['cost'] ?? null,
         'subtotal' => 0,
         'tax' => 0,
         'tax_groups' => [],
         'comments' => ($_SESSION['comments'] ?? ''),
       ];
 
-      if (is_string($_SESSION['payment']) && (($GLOBALS[$_SESSION['payment']] ?? null) instanceof $_SESSION['payment'])) {
+      if (is_string($_SESSION['payment'] ?? null) && (($GLOBALS[$_SESSION['payment']] ?? null) instanceof $_SESSION['payment'])) {
         $this->info['payment_method'] = $GLOBALS[$_SESSION['payment']]->public_title ?? $GLOBALS[$_SESSION['payment']]->title;
 
         if ( is_numeric($GLOBALS[$_SESSION['payment']]->order_status ?? null) && ($GLOBALS[$_SESSION['payment']]->order_status > 0) ) {
@@ -168,24 +170,24 @@
       }
 
       $this->customer = $customer->fetch_to_address(0);
-      $this->billing = $customer->fetch_to_address($_SESSION['billto']);
+      $this->billing = $customer->fetch_to_address($_SESSION['billto'] ?? null);
 
       $this->content_type = $_SESSION['cart']->get_content_type();
       if ( !$_SESSION['sendto'] && ('virtual' !== $this->content_type) ) {
-        $_SESSION['sendto'] = $customer->get_default_address_id();
+        $_SESSION['sendto'] = $customer->get('default_sendto');
       }
 
       $this->delivery = $customer->fetch_to_address($_SESSION['sendto']);
 
       if ('virtual' === $this->content_type) {
         $tax_address = [
-          'entry_country_id' => $this->billing['country']['id'],
-          'entry_zone_id' => $this->billing['zone_id'],
+          'entry_country_id' => $GLOBALS['customer_data']->get('country_id', $this->billing),
+          'entry_zone_id' => $GLOBALS['customer_data']->get('zone_id', $this->billing),
         ];
       } else {
         $tax_address = [
-          'entry_country_id' => $this->delivery['country']['id'],
-          'entry_zone_id' => $this->delivery['zone_id'],
+          'entry_country_id' => $GLOBALS['customer_data']->get('country_id', $this->delivery),
+          'entry_zone_id' => $GLOBALS['customer_data']->get('zone_id', $this->delivery),
         ];
       }
 

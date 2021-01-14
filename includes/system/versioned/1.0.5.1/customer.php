@@ -72,11 +72,11 @@
     public function &fetch_to_address($to = null) {
       if (!empty($to) && is_array($to)) {
         if (empty($to['state'])) {
-          $to['state'] = $to['zone_name'];
+          $to['state'] = $to['zone_name'] ?? null;
         }
 
         if (!isset($to['country_id'])) {
-          $to['country_id'] = $to['country']['id'];
+          $to['country_id'] = $to['country']['id'] ?? null;
         }
 
         if (!isset($to['id'])) {
@@ -108,7 +108,7 @@
         $this->guarantee_customer_data()->get($key, $this->data[$to]);
       }
 
-      return $this->data[$to][$key];
+      return $this->data[$to][$key] ?? null;
     }
 
     public function set($key, $value, $to = 0) {
