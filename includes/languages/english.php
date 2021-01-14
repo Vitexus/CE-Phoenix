@@ -39,10 +39,6 @@ const TITLE = STORE_NAME;
 // text in includes/modules/downloads.php
 const HEADER_TITLE_MY_ACCOUNT = 'My Account';
 
-// text in includes/application_top.php
-const HEADER_TITLE_TOP = '<i class="fas fa-home"></i><span class="sr-only"> Home</span>';
-const HEADER_TITLE_CATALOG = 'Catalog';
-
 // checkout procedure text
 const CHECKOUT_BAR_DELIVERY = 'Delivery Information';
 const CHECKOUT_BAR_PAYMENT = 'Payment Information';
@@ -145,7 +141,7 @@ const MODULE_CONTENT_BOOTSTRAP_ROW_DESCRIPTION = '';
 const TEXT_NOSCRIPT = <<<'EOT'
 <p><strong>JavaScript seems to be disabled in your browser.</strong></p>
 <p>You must have JavaScript enabled in your browser to utilize the functionality of this website.<br>
-<a class="alert-link" href="https://www.enable-javascript.com/" target="_blank" rel="nofollow">Click here for instructions on enabling javascript in your browser</a>.</p>
+<a class="alert-link" href="https://www.enable-javascript.com/" target="_blank" rel="noreferrer">Click here for instructions on enabling javascript in your browser</a>.</p>
 EOT;
 
 // sitewide is-product

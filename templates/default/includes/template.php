@@ -22,11 +22,21 @@
     ];
 
     public function __construct() {
+      $hooks =& Guarantor::ensure_global('hooks', 'shop');
       foreach ($this->_base_hook_directories as $directory) {
-        $GLOBALS['OSCOM_Hooks']->add_directory($directory);
+        $hooks->add_directory($directory);
       }
 
       spl_autoload_register([$this, 'autoload_hooks'], true, true);
+      $GLOBALS['breadcrumb'] = new breadcrumb();
+    }
+
+    public static function extract_relative_path($file, $base_path = DIR_FS_CATALOG) {
+      if ('/' !== DIRECTORY_SEPARATOR) {
+        $file = str_replace(DIRECTORY_SEPARATOR, '/', $file);
+      }
+
+      return Text::ltrim_once($file, $base_path);
     }
 
     public static function _get_template_mapping_for($file, $type) {
@@ -38,8 +48,10 @@
         case 'module':
           return dirname($file) . '/templates/tpl_' . basename($file);
         case 'ext':
-          $file = tep_ltrim_once($file, DIR_FS_CATALOG);
-          return DIR_FS_CATALOG . "templates/default/includes/components/$file";
+          $file = static::extract_relative_path($file);
+          return DIR_FS_CATALOG . "templates/default/includes/$file";
+        case 'translation':
+          return DIR_FS_CATALOG . $file;
         case 'literal':
         default:
           return DIR_FS_CATALOG . "templates/default/$file";

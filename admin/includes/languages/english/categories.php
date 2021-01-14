@@ -23,8 +23,8 @@ const TABLE_HEADING_CATEGORIES_PRODUCTS = 'Categories / Products';
 const TABLE_HEADING_ACTION = 'Action';
 const TABLE_HEADING_STATUS = 'Status';
 
-const TEXT_NEW_PRODUCT = 'Adding Product <small>in %s</small>';
-const TEXT_EXISTING_PRODUCT = 'Editing Product <small>in %s</small>';
+const TEXT_NEW_PRODUCT = 'Adding New Product <small>in %s</small>';
+const TEXT_EXISTING_PRODUCT = 'Editing %s <small>in %s</small>';
 
 const TEXT_CATEGORIES = 'Categories';
 const TEXT_PRODUCTS = 'Products';
@@ -99,8 +99,8 @@ const TEXT_COPY_AS_LINK = 'Link product';
 const TEXT_COPY_AS_DUPLICATE = 'Duplicate product';
 
 const ERROR_CANNOT_LINK_TO_SAME_CATEGORY = '<strong>Error:</strong> Can not link products in the same category.';
-const ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE = '<strong>Error:</strong> Catalog images directory is not writeable: ' . DIR_FS_CATALOG_IMAGES;
-const ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST = '<strong>Error:</strong> Catalog images directory does not exist: ' . DIR_FS_CATALOG_IMAGES;
+const ERROR_CATALOG_IMAGE_DIRECTORY_NOT_WRITEABLE = '<strong>Error:</strong> Catalog images directory is not writeable:  %s';
+const ERROR_CATALOG_IMAGE_DIRECTORY_DOES_NOT_EXIST = '<strong>Error:</strong> Catalog images directory does not exist:  %s';
 const ERROR_CANNOT_MOVE_CATEGORY_TO_PARENT = '<strong>Error:</strong> Category cannot be moved into child category.';
 
 const TEXT_CATEGORIES_DESCRIPTION = 'Category Description:<br><small>shows in category page</small>';
@@ -108,16 +108,14 @@ const TEXT_EDIT_CATEGORIES_DESCRIPTION = 'Edit the Category Description';
 
 const TEXT_CATEGORIES_SEO_DESCRIPTION = 'Category Meta Description for SEO:<br><small>Add a &lt;description&gt; Meta Element.</small>';
 const TEXT_EDIT_CATEGORIES_SEO_DESCRIPTION = 'Edit the Category Meta Description for SEO:<br><small>Changes the &lt;description&gt; Meta Element.</small>';
-const TEXT_CATEGORIES_SEO_KEYWORDS = 'Category Meta Keywords for SEO:<br><small>Add a &lt;keyword&gt; Meta Element.<br>Must be comma separated.</small>';
-const TEXT_EDIT_CATEGORIES_SEO_KEYWORDS = 'Edit the Category Meta Keywords for SEO:<br><small>Changes the &lt;keyword&gt; Meta Element.<br>Must be comma separated.</small>';
- 
+
 const TEXT_PRODUCTS_GTIN = 'Products GTIN';
 const TEXT_PRODUCTS_GTIN_HELP = 'GTIN must be stored as 14 Digits. Any GTIN smaller than this will be zero-padded per GTIN Specifications.';
 
 const TEXT_PRODUCTS_SEO_DESCRIPTION = 'Product Meta Description for SEO';
 const TEXT_PRODUCTS_SEO_DESCRIPTION_HELP = 'Add a &lt;description&gt; Meta Element.  HTML is not allowed.';
-const TEXT_PRODUCTS_SEO_KEYWORDS = 'Product Meta Keywords for SEO';
-const TEXT_PRODUCTS_SEO_KEYWORDS_HELP = 'Add a &lt;keyword&gt; Meta Element or Search Engine. Must be comma separated. HTML is not allowed.';
+const TEXT_PRODUCTS_SEO_KEYWORDS = 'Product Keywords';
+const TEXT_PRODUCTS_SEO_KEYWORDS_HELP = 'Helps the Keyword Search Engine. Must be comma separated. HTML is not allowed.';
 const TEXT_PRODUCTS_SEO_TITLE = 'Products Title for SEO';
 const TEXT_PRODUCTS_SEO_TITLE_HELP = 'Replaces the product name in the &lt;title&gt; Meta Element and optionally in the Breadcrumb Trail.<br>Leave blank to default to product name.';
 const TEXT_CATEGORIES_SEO_TITLE = 'Category Title for SEO:<br><small>Replaces the category name in the &lt;title&gt; Meta Element.<br>Leave blank to default to category name.</small>';

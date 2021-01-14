@@ -93,7 +93,7 @@
       $input = tep_draw_input_field('email_address', $email_address, $attribute, 'email')
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_EMAIL_ADDRESS_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function process(&$customer_details) {
@@ -131,12 +131,12 @@
     }
 
     public function build_db_values(&$db_tables, $customer_details, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_email_address'] = $customer_details['email_address'];
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_email_address'] = 'email_address';
     }
 

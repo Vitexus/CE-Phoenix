@@ -12,13 +12,11 @@
 
   require 'includes/application_top.php';
 
-  $admin_hooks = $OSCOM_Hooks;
-  $OSCOM_Hooks = new hooks('shop');
+  $hooks = new hooks('shop');
   $template_name = defined('TEMPLATE_SELECTION') ? TEMPLATE_SELECTION : 'default';
   $template_name .= '_template';
   $template = new $template_name();
-  $directories = $OSCOM_Hooks->get_hook_directories();
-  $OSCOM_Hooks = $admin_hooks;
+  $directories = $hooks->get_hook_directories();
 
   function tep_find_contents($base, $test) {
     $contents = [];
@@ -51,6 +49,7 @@
     return $listeners;
   }
 
+  $contents = [];
   foreach ($directories as $directory) {
     $directory = dirname($directory);
     foreach (tep_find_contents($directory, 'is_dir') as $site) {
@@ -63,8 +62,8 @@
 
           $class = "hook_{$site}_{$group}_{$pathinfo['filename']}";
           foreach (tep_find_listeners($class) as $listener) {
-            tep_guarantee_all(
-              $hooks,
+            Guarantor::guarantee_all(
+              $contents,
               $site,
               $group,
               $listener,
@@ -91,8 +90,8 @@ EOSQL
       $callable[] = $hook['hooks_method'];
     }
 
-    tep_guarantee_all(
-      $hooks,
+    Guarantor::guarantee_all(
+      $contents,
       $hook['hooks_site'],
       $hook['hooks_group'],
       $hook['hooks_action'],
@@ -103,24 +102,24 @@ EOSQL
   require 'includes/template_top.php';
 ?>
 
-  <h1 class="display-4 mb-2"><?php echo HEADING_TITLE; ?></h1>
-  
+  <h1 class="display-4 mb-2"><?= HEADING_TITLE ?></h1>
+
   <div class="table-responsive">
     <table class="table table-striped table-hover">
       <?php
-  foreach ( $hooks as $site => $groups ) {
+  foreach ( $contents as $site => $groups ) {
 ?>
       <thead class="thead-dark">
         <tr>
-          <th colspan="4"><?php echo sprintf(TABLE_HEADING_LOCATION, $site); ?></th>
+          <th colspan="4"><?php printf(TABLE_HEADING_LOCATION, $site); ?></th>
         </tr>
       </thead>
       <thead class="thead-light">
         <tr>
-          <th><?php echo TABLE_HEADING_GROUP; ?></th>
-          <th><?php echo TABLE_HEADING_FILE; ?></th>
-          <th><?php echo TABLE_HEADING_METHOD; ?></th>
-          <th class="text-right"><?php echo TABLE_HEADING_VERSION; ?></th>
+          <th><?= TABLE_HEADING_GROUP ?></th>
+          <th><?= TABLE_HEADING_FILE ?></th>
+          <th><?= TABLE_HEADING_METHOD ?></th>
+          <th class="text-right"><?= TABLE_HEADING_VERSION ?></th>
         </tr>
       </thead>
       <tbody>
@@ -137,10 +136,10 @@ EOSQL
             $class = "hook_{$site}_{$group}_{$code}";
 ?>
         <tr>
-          <td><?php echo $group; ?></td>
-          <td><?php echo $file; ?></td>
-          <td><?php echo $action; ?></td>
-          <td class="text-right"><?php echo get_class_vars($class)['version'] ?? 'N/A'; ?></td>
+          <td><?= $group ?></td>
+          <td><?= $file ?></td>
+          <td><?= $action ?></td>
+          <td class="text-right"><?= get_class_vars($class)['version'] ?? 'N/A' ?></td>
         </tr>
         <?php
           }
@@ -152,10 +151,10 @@ EOSQL
       </tbody>
     </table>
   </div>
-  
+
   <hr>
 
-  <p><?php echo TEXT_HOOKS_DIRECTORY . ' ' . DIR_FS_CATALOG . 'includes/hooks/'; ?></p>
+  <p><?= TEXT_HOOKS_DIRECTORY . ' ' . DIR_FS_CATALOG . 'includes/hooks/' ?></p>
 
 <?php
   require 'includes/template_bottom.php';

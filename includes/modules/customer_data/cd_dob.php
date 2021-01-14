@@ -91,7 +91,7 @@
       $input = tep_draw_input_field('dob', $dob, $attribute)
              . $postInput;
 
-      include $GLOBALS['oscTemplate']->map_to_template(MODULE_CUSTOMER_DATA_DOB_TEMPLATE);
+      include $GLOBALS['oscTemplate']->map_to_template($this->base_constant('TEMPLATE'));
     }
 
     public function is_valid($date) {
@@ -100,7 +100,7 @@
       }
 
       $raw = tep_cd_dob_date_raw($date);
-      return ((strlen($date) >= MODULE_CUSTOMER_DATA_DOB_MIN_LENGTH)
+      return ((strlen($date) >= $this->base_constant('MIN_LENGTH'))
         && is_numeric($raw)
         && @checkdate(substr($raw, 4, 2), substr($raw, 6, 2), substr($raw, 0, 4)));
     }
@@ -111,7 +111,7 @@
       if (!$this->is_valid($dob)) {
         $GLOBALS['messageStack']->add_classed(
           $GLOBALS['message_stack_area'] ?? 'customer_data',
-          sprintf(ENTRY_DOB_ERROR, MODULE_CUSTOMER_DATA_DOB_MIN_LENGTH) . tep_cd_dob_date_raw($customer_details['dob']));
+          sprintf(ENTRY_DOB_ERROR, $this->base_constant('MIN_LENGTH')) . tep_cd_dob_date_raw($customer_details['dob']));
 
         return false;
       }
@@ -121,12 +121,12 @@
     }
 
     public function build_db_values(&$db_tables, $customer_details, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_dob'] = $customer_details['dob'];
     }
 
     public function build_db_aliases(&$db_tables, $table = 'both') {
-      tep_guarantee_subarray($db_tables, 'customers');
+      Guarantor::guarantee_subarray($db_tables, 'customers');
       $db_tables['customers']['customers_dob'] = 'dob';
     }
 

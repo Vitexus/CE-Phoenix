@@ -31,9 +31,9 @@
   $modules_installed = (defined($module_key) && !empty(constant($module_key)) ? explode(';', constant($module_key)) : []);
 
   $action = $_GET['action'] ?? '';
-  
+
   $OSCOM_Hooks->call('modules', 'preAction');
-  
+
   if (tep_not_null($action)) {
     switch ($action) {
       case 'save':
@@ -46,9 +46,9 @@
           $value = tep_db_prepare_input($value);
           tep_db_query("UPDATE configuration SET configuration_value = '" . tep_db_input($value) . "' WHERE configuration_key = '" . tep_db_input($key) . "'");
         }
-        
+
         $OSCOM_Hooks->call('modules', 'saveAction');
-        
+
         tep_redirect(tep_href_link('modules.php', 'set=' . $set . '&module=' . $_GET['module']));
         break;
       case 'remove':
@@ -88,9 +88,9 @@
             }
 
             tep_db_query("UPDATE configuration SET configuration_value = '" . implode(';', $modules_installed) . "' WHERE configuration_key = '" . $module_key . "'");
-            
+
             $OSCOM_Hooks->call('modules', 'installAction');
-            
+
           } elseif ('remove' == $action) {
             $module->remove();
 
@@ -99,9 +99,9 @@
             }
 
             tep_db_query("UPDATE configuration SET configuration_value = '" . implode(';', $modules_installed) . "' WHERE configuration_key = '" . $module_key . "'");
-            
+
             $OSCOM_Hooks->call('modules', 'removeAction');
-            
+
             tep_redirect(tep_href_link('modules.php', 'set=' . $set));
           }
         }
@@ -109,7 +109,7 @@
         break;
     }
   }
-  
+
   $OSCOM_Hooks->call('modules', 'postAction');
 
   $new_modules_counter = 0;
@@ -141,7 +141,7 @@
 
   <div class="row">
     <div class="col">
-      <h1 class="display-4 mb-2"><?php echo HEADING_TITLE; ?></h1>
+      <h1 class="display-4 mb-2"><?= HEADING_TITLE; ?></h1>
     </div>
     <div class="col-sm-4 text-right align-self-center">
       <?php
@@ -160,9 +160,9 @@
         <table class="table table-striped table-hover">
           <thead class="thead-dark">
             <tr>
-              <th><?php echo TABLE_HEADING_MODULES; ?></th>
-              <th class="text-right"><?php echo TABLE_HEADING_SORT_ORDER; ?></th>
-              <th class="text-right"><?php echo TABLE_HEADING_ACTION; ?></th>
+              <th><?= TABLE_HEADING_MODULES; ?></th>
+              <th class="text-right"><?= TABLE_HEADING_SORT_ORDER; ?></th>
+              <th class="text-right"><?= TABLE_HEADING_ACTION; ?></th>
             </tr>
           </thead>
           <tbody>
@@ -199,6 +199,10 @@
                       $keys_extra[$key] = [];
                     }
 
+                    if (is_null($key_value) && ($module->check() <= 0)) {
+                      continue;
+                    }
+
                     $keys_extra[$key]['title'] = $key_value['configuration_title'];
                     $keys_extra[$key]['value'] = $key_value['configuration_value'];
                     $keys_extra[$key]['description'] = $key_value['configuration_description'];
@@ -211,7 +215,7 @@
                   $mInfo = new objectInfo($module_info);
                 }
 
-                if (isset($mInfo) && is_object($mInfo) && ($class == $mInfo->code) ) {
+                if (isset($mInfo->code) && ($class == $mInfo->code) ) {
                   if ($module->check() > 0) {
                     echo '<tr class="table-active onclick="document.location.href=\'' . tep_href_link('modules.php', 'set=' . $set . '&module=' . $class . '&action=edit') . '\'">' . PHP_EOL;
                   } else {
@@ -224,9 +228,9 @@
                   $icon = '<a href="' . tep_href_link('modules.php', 'set=' . $set . (isset($_GET['list']) ? '&list=new' : '') . '&module=' . $class) . '"><i class="fas fa-info-circle text-muted"></i></a>';
                 }
                 ?>
-                <td><?php echo $module->title; ?></td>
+                <td><?= $module->title; ?></td>
                 <td class="text-right"><?php if (in_array($module->code . ".$file_extension", $modules_installed) && is_numeric($module->sort_order)) echo $module->sort_order; ?></td>
-                <td class="text-right"><?php echo $icon; ?></td>
+                <td class="text-right"><?= $icon; ?></td>
               </tr>
               <?php
               }
@@ -261,7 +265,7 @@
           </tbody>
         </table>
       </div>
-      <p><?php echo TEXT_MODULE_DIRECTORY . ' ' . $module_directory; ?></p>
+      <p><?= TEXT_MODULE_DIRECTORY . ' ' . $module_directory; ?></p>
     </div>
 
 <?php
@@ -275,17 +279,17 @@
         $keys .= '<strong>' . $value['title'] . '</strong><br>' . $value['description'] . '<br>';
 
         if ($value['set_function']) {
-          eval('$keys .= ' . $value['set_function'] . "'" . $value['value'] . "', '" . $key . "');");
+          eval('$keys .= ' . $value['set_function'] . "'" . addslashes($value['value']) . "', '" . $key . "');");
         } else {
           $keys .= tep_draw_input_field('configuration[' . $key . ']', $value['value']);
         }
         $keys .= '<br><br>';
       }
-      $keys = substr($keys, 0, strrpos($keys, '<br><br>'));
+      $keys = html_entity_decode(stripslashes(substr($keys, 0, strrpos($keys, '<br><br>'))));
 
       $heading[] = ['text' => $mInfo->title];
 
-      $contents = ['form' => tep_draw_form('modules', 'modules.php', 'set=' . $set . '&module=' . $_GET['module'] . '&action=save')];
+      $contents = ['form' => tep_draw_form('modules', 'modules.php', tep_get_all_get_params(['action']) . 'action=save')];
       $contents[] = ['text' => $keys];
       $contents[] = ['class' => 'text-center', 'text' => tep_draw_bootstrap_button(IMAGE_SAVE, 'fas fa-save', null, 'primary', null, 'btn-success mr-2') . tep_draw_bootstrap_button(IMAGE_CANCEL, 'fas fa-times', tep_href_link('modules.php', 'set=' . $set . '&module=' . $_GET['module']), null, null, 'btn-light')];
       break;
@@ -297,20 +301,30 @@
           $keys = '';
           foreach ($mInfo->keys as $value) {
             $keys .= '<strong>' . $value['title'] . '</strong><br>';
+
             if ($value['use_function']) {
-              $use_function = $value['use_function'];
-              if (preg_match('/->/', $use_function)) {
-                $class_method = explode('->', $use_function);
-                if (!isset(${$class_method[0]}) || !is_object(${$class_method[0]})) {
-                  ${$class_method[0]} = new $class_method[0]();
-                }
-                $keys .= tep_call_function($class_method[1], $value['value'], ${$class_method[0]});
+              if (strpos($value['use_function'], '->')) {
+                $class_method = explode('->', $value['use_function']);
+                $use_function = [Guarantor::ensure_global($class_method[0]), $class_method[1]];
               } else {
-                $keys .= tep_call_function($use_function, $value['value']);
+                $use_function = $value['use_function'];
+              }
+
+              if (is_callable($use_function)) {
+                $keys .= call_user_func($use_function, $value['value']);
+              } else {
+                $keys .= '0';
+                $messageStack->add(
+                  sprintf(
+                    WARNING_INVALID_USE_FUNCTION,
+                    $configuration['use_function'],
+                    $configuration['configuration_title']),
+                  'warning');
               }
             } else {
               $keys .= tep_break_string($value['value'], 40, '<br>');
             }
+
             $keys .= '<br><br>';
           }
           $keys = substr($keys, 0, strrpos($keys, '<br><br>'));
@@ -318,7 +332,7 @@
           $contents[] = ['class' => 'text-center', 'text' => tep_draw_bootstrap_button(IMAGE_EDIT, 'fas fa-plus', tep_href_link('modules.php', 'set=' . $set . '&module=' . $mInfo->code . '&action=edit'), null, null, 'btn-warning mr-2') . tep_draw_bootstrap_button(IMAGE_MODULE_REMOVE, 'fas fa-minus', tep_href_link('modules.php', 'set=' . $set . '&module=' . $mInfo->code . '&action=remove'), null, null, 'btn-warning')];
 
           if (isset($mInfo->signature) && (list($scode, $smodule, $sversion, $soscversion) = explode('|', $mInfo->signature))) {
-            $contents[] = ['text' => '<i class="fas fa-info-circle text-dark mr-2"></i><strong>' . TEXT_INFO_VERSION . '</strong> ' . $sversion . ' (<a href="http://sig.oscommerce.com/' . $mInfo->signature . '" target="_blank">' . TEXT_INFO_ONLINE_STATUS . '</a>)'];
+            $contents[] = ['text' => '<i class="fas fa-info-circle text-dark mr-2"></i><strong>' . TEXT_INFO_VERSION . '</strong> ' . $sversion . ' (<a href="http://sig.oscommerce.com/' . $mInfo->signature . '" target="_blank" rel="noreferrer">' . TEXT_INFO_ONLINE_STATUS . '</a>)'];
           }
 
           if (isset($mInfo->api_version)) {
@@ -332,7 +346,7 @@
             $contents[] = ['class' => 'text-center', 'text' => tep_draw_bootstrap_button(IMAGE_MODULE_INSTALL, 'fas fa-plus', tep_href_link('modules.php', 'set=' . $set . '&module=' . $mInfo->code . '&action=install'), null, null, 'btn-warning')];
 
             if (isset($mInfo->signature) && (list($scode, $smodule, $sversion, $soscversion) = explode('|', $mInfo->signature))) {
-              $contents[] = ['text' => '<i class="fas fa-info-circle text-dark mr-2"></i><strong>' . TEXT_INFO_VERSION . '</strong> ' . $sversion . ' (<a href="http://sig.oscommerce.com/' . $mInfo->signature . '" target="_blank">' . TEXT_INFO_ONLINE_STATUS . '</a>)'];
+              $contents[] = ['text' => '<i class="fas fa-info-circle text-dark mr-2"></i><strong>' . TEXT_INFO_VERSION . '</strong> ' . $sversion . ' (<a href="http://sig.oscommerce.com/' . $mInfo->signature . '" target="_blank" rel="noreferrer">' . TEXT_INFO_ONLINE_STATUS . '</a>)'];
             }
 
             if (isset($mInfo->api_version)) {

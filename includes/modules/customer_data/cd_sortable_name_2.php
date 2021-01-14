@@ -24,7 +24,7 @@
           'title' => 'Enable Two Part Sortable Name module',
           'value' => 'True',
           'desc' => 'Do you want to add the module to your shop?',
-          'set_function' => "tep_cfg_select_option(['True', 'False'], ",
+          'set_func' => "tep_cfg_select_option(['True', 'False'], ",
         ],
       ];
     }
@@ -59,7 +59,7 @@
     }
 
     public function add_order_by(&$columns, $criterion, $direction) {
-      tep_guarantee_subarray($columns, 'customers');
+      Guarantor::guarantee_subarray($columns, 'customers');
       $columns['customers']['customers_lastname'] = $direction;
       $columns['customers']['customers_firstname'] = $direction;
     }
