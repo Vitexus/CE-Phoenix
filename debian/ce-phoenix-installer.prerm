@@ -1,0 +1,11 @@
+#!/bin/sh
+# prerm script for ce-phoenix-installer
+
+set -e
+
+chmod o-w /usr/share/ce-phoenix/includes/configure.php
+chmod o-w /usr/share/ce-phoenix/admin/includes/configure.php 
+
+#DEBHELPER#
+
+exit 0

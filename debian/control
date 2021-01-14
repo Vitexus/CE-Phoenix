@@ -59,7 +59,13 @@ Description:  powerful ecommerce shop
  currency or language providing a seamless customer experience.
  Phoenix is the official Community Version of osCommerce.
 
-Package: ce-phoenix-installer
+Package: ce-phoenix-admin
 Architecture: all
 Depends: ce-phoenix
+Description:  powerful ecommerce shop web administration
+
+Package: ce-phoenix-installer
+Architecture: all
+Depends: ce-phoenix-admin
 Description:  powerful ecommerce shop web installer
+

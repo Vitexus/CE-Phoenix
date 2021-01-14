@@ -1,0 +1,11 @@
+#!/bin/sh
+# postinst script for ce-phoenix-installer
+
+set -e
+
+chmod 777 /usr/share/ce-phoenix/includes/configure.php
+chmod 777 /usr/share/ce-phoenix/admin/includes/configure.php 
+
+#DEBHELPER#
+
+exit 0

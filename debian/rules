@@ -14,8 +14,28 @@ export DH_VERBOSE = 1
 override_dh_install:
 	dh_install
 	mkdir -p debian/ce-phoenix-installer/usr/share/ce-phoenix/
-	cp -rfv install  debian/ce-phoenix-installer/usr/share/ce-phoenix/
-	cp -rfv images   debian/ce-phoenix/usr/share/ce-phoenix/
-	cp -rfv includes debian/ce-phoenix/usr/share/ce-phoenix/
-	cp -rfv ext      debian/ce-phoenix/usr/share/ce-phoenix/
+	cp -rfv install   debian/ce-phoenix-installer/usr/share/ce-phoenix/
+	cp -rfv admin     debian/ce-phoenix-admin/usr/share/ce-phoenix/
+	cp -rfv images    debian/ce-phoenix/usr/share/ce-phoenix/
+	cp -rfv includes  debian/ce-phoenix/usr/share/ce-phoenix/
+	cp -rfv download  debian/ce-phoenix/usr/share/ce-phoenix/
+	cp -rfv ext       debian/ce-phoenix/usr/share/ce-phoenix/
+	cp -rfv templates debian/ce-phoenix/usr/share/ce-phoenix/
+	chmod -x debian/ce-phoenix/usr/share/ce-phoenix/includes/work/.htaccess \
+debian/ce-phoenix/usr/share/ce-phoenix/includes/apps/braintree_cc/ssl/api_braintreegateway_com.ca.crt \
+debian/ce-phoenix/usr/share/ce-phoenix/includes/spiders.txt \
+debian/ce-phoenix/usr/share/ce-phoenix/includes/local/README \
+debian/ce-phoenix/usr/share/ce-phoenix/images/.htaccess \
+debian/ce-phoenix/usr/share/ce-phoenix/includes/.htaccess \
+debian/ce-phoenix/usr/share/ce-phoenix/ext/modules/payment/paypal/paypal.com.crt \
+debian/ce-phoenix/usr/share/ce-phoenix/includes/cacert.pem \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/images/.htaccess \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/includes/javascript/spiffyCal/images/spiffycal.cur \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/.htpasswd_oscommerce \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/includes/local/README \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/includes/javascript/spiffyCal/images/spiffycal2.cur \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/includes/.htaccess \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/backups/.htaccess \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/includes/javascript/spiffyCal/images/spiffycal3.cur \
+debian/ce-phoenix-admin/usr/share/ce-phoenix/admin/.htaccess \
 
