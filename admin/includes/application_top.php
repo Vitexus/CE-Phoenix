@@ -17,7 +17,9 @@
 // load server configuration parameters
   include 'includes/configure.php';
 
+    
   // autoload classes in the classes or modules directories
+  require '../vendor/autoload.php';
   require DIR_FS_CATALOG . 'includes/functions/autoloader.php';
   require 'includes/functions/autoloader.php';
   spl_autoload_register('tep_autoload_admin');

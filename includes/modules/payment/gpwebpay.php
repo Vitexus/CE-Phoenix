@@ -39,8 +39,6 @@ class gpwebpay extends abstract_payment_module {
         $this->sort_order = defined('MODULE_PAYMENT_GPWEBPAY_SORT_ORDER') ? constant('MODULE_PAYMENT_GPWEBPAY_SORT_ORDER') : 0;
         $this->enabled = defined('MODULE_PAYMENT_GPWEBPAY_STATUS') && ((constant('MODULE_PAYMENT_GPWEBPAY_STATUS') == 'True') ? true : false);
 
-
-
         //        if ((int)MODULE_PAYMENT_GPWEBPAY_PREPARE_ORDER_STATUS_ID > 0)
         //        {
         //            $this->order_status = MODULE_PAYMENT_GPWEBPAY_PREPARE_ORDER_STATUS_ID;
@@ -60,13 +58,12 @@ class gpwebpay extends abstract_payment_module {
      * @return array
      */
     public function get_error() {
-       $error = AdamStipak\Webpay\PaymentResponse::response_meaning($_REQUEST['PRCODE'],$_REQUEST['SRCODE']);
-      return [
-        'title' => _('GPWebPay errpr'),
-        'error' => $error,
-      ];
+        $error = AdamStipak\Webpay\PaymentResponse::response_meaning($_REQUEST['PRCODE'], $_REQUEST['SRCODE']);
+        return [
+            'title' => _('GPWebPay errpr'),
+            'error' => $error,
+        ];
     }
-
 
     // class methods
 
@@ -192,7 +189,7 @@ class gpwebpay extends abstract_payment_module {
                 $order_totals = [];
                 if (is_array($order_total_modules->modules)) {
                     reset($order_total_modules->modules);
-                    while (list (, $value) = each($order_total_modules->modules)) {
+                    foreach ($order_total_modules->modules as $value) {
                         $class = substr($value, 0, strrpos($value, '.'));
                         if ($GLOBALS[$class]->enabled) {
                             for ($i = 0, $n = sizeof($GLOBALS[$class]->output); $i < $n; $i++) {
@@ -323,7 +320,7 @@ class gpwebpay extends abstract_payment_module {
                     }
                 }
 
-                $cart_gpwebpay_Standard_ID = hexdec( substr(md5($cartID . '-' . $insert_id),0,10)  ); // WTF ?
+                $cart_gpwebpay_Standard_ID = hexdec(substr(md5($cartID . '-' . $insert_id), 0, 10)); // WTF ?
                 tep_session_register('cart_gpwebpay_Standard_ID');
             }
         }
@@ -349,8 +346,8 @@ class gpwebpay extends abstract_payment_module {
 
         list( $cartId, $orderId ) = explode('-', $cart_gpwebpay_Standard_ID);
 
-        if (defined('USE_FLEXIBEE') && (constant('USE_FLEXIBEE') == 'true')) {
-            $invoice = new PureOSC\flexibee\FakturaVydana();
+        if (defined('USE_ABRAFLEXI') && (constant('USE_ABRAFLEXI') == 'true')) {
+            $invoice = new PureOSC\abraflexi\FakturaVydana();
             $invoice->setDataValue("firma", 'ext:customers:' . $customer_id);
             $invoice->setDataValue("typDokl", 'code:OBJEDNÁVKA');
             $invoice->setDataValue("stavMailK", 'stavMail.neodesilat');
@@ -362,7 +359,7 @@ class gpwebpay extends abstract_payment_module {
         foreach ($order_total_modules->process() as $orderTotalRow) {
             switch ($orderTotalRow['code']) {
                 case 'ot_shipping':
-                    if (defined('USE_FLEXIBEE') && (constant('USE_FLEXIBEE') == 'true')) {
+                    if (defined('USE_ABRAFLEXI') && (constant('USE_ABRAFLEXI') == 'true')) {
                         $invoice->addArrayToBranch([
                             'nazev' => $orderTotalRow['title'],
                             'mnozMj' => 1,
@@ -385,7 +382,7 @@ class gpwebpay extends abstract_payment_module {
         foreach ($order->products as $orderItem) {
             $products_info .= $orderItem['qty'] . "x" . $orderItem['model'] . ' ' . $orderItem['name'] . ";";
 
-            if (defined('USE_FLEXIBEE') && (constant('USE_FLEXIBEE') == 'true')) {
+            if (defined('USE_ABRAFLEXI') && (constant('USE_ABRAFLEXI') == 'true')) {
                 $invoice->addArrayToBranch([
                     'cenik' => 'ext:products:' . $orderItem['id'],
                     'nazev' => $orderItem['name'],
@@ -396,16 +393,16 @@ class gpwebpay extends abstract_payment_module {
             }
         }
 
-        if (defined('USE_FLEXIBEE') && (constant('USE_FLEXIBEE') == 'true')) {
+        if (defined('USE_ABRAFLEXI') && (constant('USE_ABRAFLEXI') == 'true')) {
             $invoice->setDataValue('id', 'ext:orders:' . $orderId);
             if ($invoice->sync()) {
                 $varSym = $invoice->getDataValue('varSym');
                 $orderCode = $invoice->getRecordID();
-                $invoice->insertToFlexiBee(['id' => $invoice->getRecordID(), 'stavMailK' => 'stavMail.odeslat']);
+                $invoice->insertToAbraFlexi(['id' => $invoice->getRecordID(), 'stavMailK' => 'stavMail.odeslat']);
                 \Ease\Shared::instanced()->addStatusMessage(_('New order saved') . $invoice,
                         'success');
             } else {
-                echo 'FlexiBee Errorek';
+                echo 'AbraFlexi Errorek';
             }
         } else {
             $orderCode = null;
@@ -414,11 +411,8 @@ class gpwebpay extends abstract_payment_module {
 
 
 //        CE-Phoenix/includes/modules/payment/gpwebpay.php
-
-        require_once __DIR__ . '/../../../includes/apps/gpwebpay/gp-webpay-php-sdk/src/AdamStipak/Webpay/Exception.php';
-        require_once __DIR__ . '/../../../includes/apps/gpwebpay/gp-webpay-php-sdk/src/AdamStipak/Webpay/Signer.php';
-
-
+//        require_once __DIR__ . '/../../../includes/apps/gpwebpay/gp-webpay-php-sdk/src/AdamStipak/Webpay/Exception.php';
+//        require_once __DIR__ . '/../../../includes/apps/gpwebpay/gp-webpay-php-sdk/src/AdamStipak/Webpay/Signer.php';
 
         $process_button_string = '';
 
@@ -450,7 +444,6 @@ class gpwebpay extends abstract_payment_module {
 
         $gpwpcurrency = $currconvert[$currency];
         $successUrl = tep_href_link('checkout_succes.php', '', 'SSL');
-
 
         $request = new PaymentRequest($varSym, intval($totalPrice),
                 $gpwpcurrency, 1, $successUrl, $varSym);
@@ -738,7 +731,7 @@ class gpwebpay extends abstract_payment_module {
     }
 
     function remove() {
-        tep_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '",
+        tep_db_query("delete from configuration where configuration_key in ('" . implode("', '",
                         $this->keys()) . "')");
         tep_db_query("delete from " . 'orders_status' . " where orders_status_name like '%[gpwebpay]%'");
     }

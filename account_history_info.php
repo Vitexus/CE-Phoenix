@@ -35,4 +35,14 @@ EOSQL
 
   require $oscTemplate->map_to_template(__FILE__, 'page');
 
+if (defined('USE_ABRAFLEXI') && (constant('USE_ABRAFLEXI') == 'true')) {
+    $invoice = new PureOSC\AbraFlexi\FakturaVydana('ext:orders:'.$_GET['order_id']);
+
+    $invoiceNum = 'ext:src:faktura-vydana:'.$invoice->getRecordID();
+    if ($invoice->recordExists($invoiceNum)) {
+        $invoice->loadFromAbraFlexi($invoiceNum);
+    }
+}
+  
+  
   require 'includes/application_bottom.php';

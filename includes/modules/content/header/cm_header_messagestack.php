@@ -19,11 +19,11 @@
     }
 
     public function execute() {
-      global $messageStack;
+      
       
       $content_width = (int)MODULE_CONTENT_HEADER_MESSAGESTACK_CONTENT_WIDTH;
 
-      if ($messageStack->size('header') > 0) {
+      if (Guarantor::ensure_global('messageStack')->size('header') > 0) {
         $tpl_data = [ 'group' => $this->group, 'file' => __FILE__ ];
         include 'includes/modules/content/cm_template.php';
       }
