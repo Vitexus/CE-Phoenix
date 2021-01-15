@@ -175,7 +175,7 @@
       <div class="form-group row">
         <label for="dbName" class="col-form-label col-sm-3 text-left text-sm-right">Import Sample Data</label>
         <div class="col-sm-9">
-          <?php echo osc_draw_select_menu('DB_IMPORT_SAMPLE', [['id' => '0', 'text' => 'Skip sample data'], ['id' => '1', 'text' => 'Import sample data']], '1'); ?>
+          <?php echo osc_draw_select_menu('DB_IMPORT_SAMPLE', [['id' => '0', 'text' => 'Skip sample data'], ['id' => '1', 'text' => 'Import sample data'],['id' => '2', 'text' => 'Use database as is']], '1'); ?>
           <i class="fas fa-asterisk form-control-feedback text-danger"></i>
           <small class="form-text text-muted">Import sample product and category data?</small>
         </div>

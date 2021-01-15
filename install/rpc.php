@@ -57,14 +57,23 @@
         $sql_sample_file = $dir_fs_www_root . '/phoenix_data_sample.sql';
 
         osc_set_time_limit(0);
-        osc_db_install($db['DB_DATABASE'], $sql_file);
+        
+        if($db['DB_IMPORT_SAMPLE'] == '2'){
+            if (!@osc_db_select_db($database)) {
+              if (@osc_db_query('create database ' . $database)) {
+                osc_db_select_db($database);
+              } else {
+                $db_error = mysqli_error($$link);
+              }
+            }            
+        } else {
+            osc_db_install($db['DB_DATABASE'], $sql_file);
+        }
         
         if ($db_error == false) {
           if ($db['DB_IMPORT_SAMPLE'] == '1') {
             osc_db_install($db['DB_DATABASE'], $sql_sample_file);
           }
-        }
-
         if ($db_error != false) {
           echo '[[0|' . $db_error . ']]';
         } else {
