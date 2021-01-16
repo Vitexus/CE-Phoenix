@@ -52,7 +52,7 @@
       return htmlspecialchars($string);
     }
 
-    return Text::output($string, $translate);
+    return Text::output(is_null($string) ? '' : $string, $translate);
   }
 
   function tep_output_string_protected($string) {
