@@ -19,6 +19,7 @@ class pi_hall extends abstract_module {
     public $api_version;
     public $group;
 
+            
     function __construct() {
         parent::__construct();
         $this->group = basename(dirname(__FILE__));
@@ -27,7 +28,7 @@ class pi_hall extends abstract_module {
         $this->description .= '<div class="alert alert-info">' . $this->display_layout() . '</div>';
 
         if (defined('PI_HALL_STATUS')) {
-            $this->group = 'pi_modules_' . strtolower(PI_HALL_GROUP);
+            $this->group = 'pi_modules_' . strtolower(PI_HALL_STATUS);
             $this->content_width = (int) PI_HALL_CONTENT_WIDTH;
         }
     }
@@ -39,9 +40,8 @@ class pi_hall extends abstract_module {
         $thumbnail_width = PI_HALL_CONTENT_WIDTH_EACH;
 
         $pi_image = $pi_thumb = null;
-        echo 'HALL';
 
-        return new PureOSC\ui\Hall($product_info['product_name']);
+        echo strval(new PureOSC\ui\Hall(array_key_exists('product_model', $product_info) ? $product_info['product_model'] :  PI_HALL_TITLE ));
     }
 
     function display_layout() {

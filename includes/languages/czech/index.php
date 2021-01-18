@@ -19,8 +19,8 @@ define('HEADING_TITLE', 'Vítejte na serveru '.STORE_NAME);
 const TEXT_NO_PRODUCTS = 'V této kategorii není žádné zboží.';
 const TEXT_NUMBER_OF_PRODUCTS = 'Počet: ';
 const TEXT_SHOW = '<strong>vyberte:</strong>';
-const TEXT_BUY = 'Koupit \'';
-const TEXT_NOW = '\' nyní';
+const TEXT_BUY = 'Koupit ';
+const TEXT_NOW = 'nyní';
 const TEXT_ALL_CATEGORIES = 'všechny kategorie';
 const TEXT_ALL_MANUFACTURERS = 'všichni výrobci';
 

@@ -2,10 +2,10 @@ repoversion=$(shell LANG=C aptitude show ce-phoenix | grep Version: | awk '{prin
 nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
 
 clean:
-	rm -rf vendor composer.lock db/multiflexibee.sqlite src/*/*dataTables*
+	rm -rf vendor composer.lock db/*.sqlite src/*/*dataTables*
 
 migration:
-	cd src ; ../vendor/bin/phinx migrate -c ../phinx-adapter.php ; cd ..
+	./vendor/bin/phinx migrate -c ./phinx-adapter.php
 
 autoload:
 	composer update

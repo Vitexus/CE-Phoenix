@@ -110,7 +110,14 @@
       $redirect = true;
     }
 
-    if ($redirect || !isset($login_request) || isset($_GET['login_request']) || isset($_POST['login_request']) || isset($_COOKIE['login_request']) || isset($_SESSION['login_request']) || isset($_FILES['login_request']) || isset($_SERVER['login_request'])) {
+    if ($redirect || 
+            !isset($login_request) || 
+            isset($_GET['login_request']) || 
+            isset($_POST['login_request']) || 
+            isset($_COOKIE['login_request']) || 
+            isset($_SESSION['login_request']) || 
+            isset($_FILES['login_request']) || 
+            isset($_SERVER['login_request'])) {
       tep_redirect(tep_href_link('login.php', (isset($redirect_origin['auth_user']) ? 'action=process' : '')));
     }
 

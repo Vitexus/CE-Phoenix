@@ -10,6 +10,10 @@
   Released under the GNU General Public License
 */
 
-const MODULE_CONTENT_HEADER_BREADCRUMB_TITLE = 'Breadcrumb';
-const MODULE_CONTENT_HEADER_BREADCRUMB_DESCRIPTION = 'Adds a Breadrcumb Trail into the Header Area of your site.';
+  const MODULE_CONTENT_HEADER_BREADCRUMB_TEXT_TITLE = 'Drobty';
+  const MODULE_CONTENT_HEADER_BREADCRUMB_TEXT_DESCRIPTION = 'Přidá Drobky do hlavičky.';
 
+  const MODULE_CONTENT_HEADER_BREADCRUMB_TITLES = [
+    '<i class="fas fa-home"></i><span class="sr-only"> Domů</span>' => null,
+    'Catalog' => 'index.php',
+  ];

@@ -1,0 +1,59 @@
+.separatorArticle {height: 1px; color: #FF0000; }
+.separatorBlogArticle { height: 1px; color: #FF0000; }
+.separatorNewArticle { height: 1px; color: #FF0000; }
+.separatorTopic { height: 1px; color: #FF0000; }
+.articleLinkHdr {font-size:12px; font-weight:600}
+.articleLinkMarker {font-size:10px; padding-left:2px;}
+.articleBlogEntry {padding-left:4px; background-color:lightyellow;}
+.articleSearch {font-size:12px; font-weight:600; padding-top:6px; color:red}
+.articleBox {border:2px inset #ccc; padding-top:10px;-moz-box-shadow: 0 0 15px rgba(0,0,0,0.9);
+-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.9);
+box-shadow: 0 0 15px rgba(0,0,0,0.9);
+}
+div.article-sub-title {font-weight:bold;margin-bottom:10px;}
+div.article-listing {clear:both;padding-top:15px;}
+.articleBox-child {display:inline-block;padding:0 10px;margin-left:10px;}
+.articlePadding-Comments {font-weight:bold;padding-top:10px}
+.article-comment-container {border:1px solid lightgray; margin-bottom:4px;}
+.articlePadding {margin:10px 0px;padding:0px 20px}
+.articlePaddingSubmit {padding-bottom:10px}
+.article-products {text-align:center;font-weight:bold;margin:20px 0;}
+.cm-pi-article-manager {margin-bottom:30px;}
+.cm-pi-article-manager div {margin:10px 10px;}
+.articles-index-container{display: flex; justify-content: space-around; flex-flow:row wrap;}
+.articles-index-child {flex: 1 1 30%;}
+.articles-index-title {text-align:center;padding:4 0;}
+@media screen and (max-width: 420px) {
+.articles-index-child {flex: 1 1 100%;} 
+}
+div div.blog-submission-msg {
+font-size:16px;
+text-align:center;
+color:red;
+margin-bottom:10px;
+padding:10px;
+background:#D7F0FF;
+-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+-ms-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+-moz-box-shadow: 0 0 15px rgba(0,0,0,0.5);
+box-shadow: 0 0 15px rgba(0,0,0,0.5);
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+-ms-border-radius: 10px;
+border-radius: 10px;
+}
+@media screen and (max-width: 420px) {
+div div.blog-submission-msg {font-size;11px;} 
+}
+textarea{
+ border:1px solid #999999;
+ width:100%;
+ margin:5px 0;
+ padding:3px;
+}
+.textareacontainer{
+ padding-right: 8px; /* 1 + 3 + 3 + 1 */
+}
+.article-line-caption {padding-right:6px;font-weight:bold;}
+.article-line-padding {padding-left:10px;}
+.article-manager-navbar-separator {font-weight:bold;padding-left:2px;}

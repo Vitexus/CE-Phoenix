@@ -19,21 +19,35 @@ class Hall extends DivTag {
 
     public $rows = 5;
     public $name = '';
+    public $segments = [];
 
-    public function __construct($hallName, $properties = []) {
+    public function __construct($hallName, $segments = [], $properties = []) {
         $this->name = $hallName;
+        $this->segments = $segments;
         parent::__construct(new \Ease\Html\H1Tag($this->name), $properties);
         $this->populate();
     }
 
     public function segments() {
-        return [['name'=>'defaul']];
+        return empty($this->segments) ? [] : $this->segments;
     }
-    
-    public function populate( ) {
-        foreach ($this->segments() as $segment) {
-            $this->addItem(new Segment($segment['name'],4,4));
+
+    public function populate($properties = []) {
+        foreach ($this->segments() as $segment => $geometry) {
+            $this->addItem(new Segment($segment, key($geometry), current($geometry)));
         }
+    }
+
+    public function seats() {
+        $seats = 0;
+        foreach ($this->segments() as $segment) {
+            $seats += key($segment) * current($segment);
+        }
+        return $seats;
+    }
+
+    public function updateTickets() {
+        
     }
 
 }

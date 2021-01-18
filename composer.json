@@ -13,7 +13,11 @@
     "require": {
         "chillerlan/php-qrcode": "^4.3",
         "vitexsoftware/ease-twbootstrap4-widgets-flexibee": "dev-abraflexi",
-        "adamstipak/webpay-php": "dev-master"
+        "adamstipak/webpay-php": "dev-master",
+         "vitexsoftware/ease-fluentpdo": "*"
+    },
+    "require-dev": {
+        "robmorgan/phinx": "dev-master"
     },
     "autoload": {
         "psr-4": {

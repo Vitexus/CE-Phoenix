@@ -24,10 +24,11 @@ class Chair extends ImgTag {
     public $occupied = false;
     public $order = null;
     public $chairImage = 'apps/hall/chair.svg';
+    public $chairClass = 'chair_place';
 
     public function __construct($number, $alt = null, $tagProperties = []) {
-        $tagProperties['style'] = 'width: 9%;';
         $tagProperties['title'] = $number + 1;
+        $tagProperties['class'] = $this->chairClass;
         parent::__construct($this->occupied ? $this->getOrderQRCode($this->order) : $this->getChairImage($this->chairImage), $alt, $tagProperties);
         $this->addItem(new Label('info', $number));
     }
@@ -37,7 +38,7 @@ class Chair extends ImgTag {
     }
 
     public function getChairImage() {
-        return DIR_WS_CATALOG . '/images/' . $this->chairImage;
+        return constant('DIR_WS_CATALOG')  . 'images/' . $this->chairImage;
     }
 
 }

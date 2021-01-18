@@ -1,51 +1,33 @@
 <?php
-/*
-  $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+// set the level of error reporting
+error_reporting(E_ALL);
 
-  Copyright (c) 2020 osCommerce
-
-  Released under the GNU General Public License
-*/
-
-  if (file_exists('includes/local/configure.php')) { // for developers
-    include 'includes/local/configure.php';
-    return;
-  }
-
-// Set the level of error reporting
-  error_reporting(E_ALL);
-
-// define our webserver variables
-// FS = Filesystem (physical)
-// WS = Webserver (virtual)
-  const HTTP_SERVER = ''; // eg, http://localhost or - https://localhost should not be NULL for production servers
-  const COOKIE_OPTIONS = [
+const HTTP_SERVER = 'http://localhost';
+const COOKIE_OPTIONS = [
     'lifetime' => 0,
-    'domain' => '',
-    'path' => '',
+    'domain' => 'localhost',
+    'path' => '/PureHTML/CE-Phoenix/admin',
     'samesite' => 'Lax',
-  ];
+];
+const DIR_WS_ADMIN = '/PureHTML/CE-Phoenix/admin/';
 
-  define('DIR_FS_DOCUMENT_ROOT', $DOCUMENT_ROOT); // where your pages are located on the server. if $DOCUMENT_ROOT doesn't suit you, replace with your local path. (eg, /usr/local/apache/htdocs)
-  const DIR_WS_ADMIN = '/admin/';
-  const DIR_FS_ADMIN = DIR_FS_DOCUMENT_ROOT . DIR_WS_ADMIN;
-  const DIR_FS_BACKUP = DIR_FS_ADMIN . 'backups/';
+const DIR_FS_DOCUMENT_ROOT = '/home/vitex/Projects/PureHTML/CE-Phoenix/';
+const DIR_FS_ADMIN = '/home/vitex/Projects/PureHTML/CE-Phoenix/admin/';
+const DIR_FS_BACKUP = DIR_FS_ADMIN . 'backups/';
 
-  // leave blank or omit to use MySQL sessions
-  const DIR_FS_SESSION = '';
+const HTTP_CATALOG_SERVER = 'http://localhost';
+const DIR_WS_CATALOG = '/PureHTML/CE-Phoenix/';
+const DIR_FS_CATALOG = '/home/vitex/Projects/PureHTML/CE-Phoenix/';
 
-  const HTTP_CATALOG_SERVER = '';
-  const DIR_WS_CATALOG = '/catalog/';
-  const DIR_FS_CATALOG = DIR_FS_DOCUMENT_ROOT . DIR_WS_CATALOG;
+date_default_timezone_set('Europe/Bratislava');
 
-// set default timezone if none exists (PHP 5.3 throws an E_WARNING)
-  date_default_timezone_set(date_default_timezone_get());
-
-// define our database connection
-  const DB_SERVER = '';
-  const DB_SERVER_USERNAME = 'mysql';
-  const DB_SERVER_PASSWORD = '';
-  const DB_DATABASE = 'osCommerce';
+// If you are asked to provide configure.php details
+// please remove the data below before sharing
+const DB_SERVER = '192.168.2.190';
+const DB_SERVER_USERNAME = 'ph1';
+const DB_SERVER_PASSWORD = 'ph1';
+const DB_DATABASE = 'ph1';
+const DB_CONNECTION = 'mysql';
+const DB_SERVER_PORT = 3306;
+  
