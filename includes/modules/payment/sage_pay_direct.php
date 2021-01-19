@@ -42,8 +42,7 @@
 
         $this->description .= $this->getTestLinkInfo();
       }
-
-      if ( Text::is_empty($this->get_constant('MODULE_PAYMENT_SAGE_PAY_DIRECT_VENDOR_LOGIN_NAME')) ) {
+      if (!defined('MODULE_PAYMENT_SAGE_PAY_DIRECT_VENDOR_LOGIN_NAME') || !tep_not_null(MODULE_PAYMENT_SAGE_PAY_DIRECT_VENDOR_LOGIN_NAME) ) {
         $this->description = '<div class="alert alert-warning">' . MODULE_PAYMENT_SAGE_PAY_DIRECT_ERROR_ADMIN_CONFIGURATION . '</div>' . $this->description;
 
         $this->enabled = false;
