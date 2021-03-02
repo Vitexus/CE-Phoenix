@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -16,12 +16,12 @@
   $htpasswd_array = null;
   $is_iis = stripos($_SERVER['SERVER_SOFTWARE'], 'iis');
 
-  $authuserfile_array = ['##### OSCOM ADMIN PROTECTION - BEGIN #####',
+  $authuserfile_array = ['##### Phoenix ADMIN PROTECTION - BEGIN #####',
                          'AuthType Basic',
-                         'AuthName "OSCOM CE Phoenix Administration Tool"',
+                         'AuthName "CE Phoenix Administration Tool"',
                          'AuthUserFile ' . DIR_FS_ADMIN . '.htpasswd_oscommerce',
                          'Require valid-user',
-                         '##### OSCOM ADMIN PROTECTION - END #####'];
+                         '##### Phoenix ADMIN PROTECTION - END #####'];
 
   if (!$is_iis && file_exists(DIR_FS_ADMIN . '.htpasswd_oscommerce') && tep_is_writable(DIR_FS_ADMIN . '.htpasswd_oscommerce') && file_exists(DIR_FS_ADMIN . '.htaccess') && tep_is_writable(DIR_FS_ADMIN . '.htaccess')) {
     $htaccess_array = [];

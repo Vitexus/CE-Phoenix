@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -35,8 +35,8 @@
         $fp = fopen(DIR_FS_BACKUP . $backup_file, 'w');
 
         $schema = sprintf(<<<'EOSQL'
-# osCommerce, Open Source E-Commerce Solutions
-# http://www.oscommerce.com
+# CE Phoenix, E-Commerce made Easy
+# https://phoenixcart.org
 #
 # Database Backup For %s
 # Copyright (c) %d %s

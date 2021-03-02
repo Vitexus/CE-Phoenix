@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -36,7 +36,7 @@
 
         $OSCOM_Hooks->call('reviews', 'updateAction');
 
-        tep_redirect(tep_href_link('reviews.php', 'rID=' . $reviews_id(isset($_GET['page']) ? '&page=' . (int)$_GET['page'] : '')));
+        tep_redirect(tep_href_link('reviews.php', 'rID=' . $reviews_id . (isset($_GET['page']) ? '&page=' . (int)$_GET['page'] : '')));
         break;
       case 'deleteconfirm':
         $reviews_id = Text::input($_GET['rID']);

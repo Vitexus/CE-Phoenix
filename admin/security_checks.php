@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2019 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -83,7 +83,6 @@
           <th><?= TABLE_HEADING_TITLE ?></th>
           <th><?= TABLE_HEADING_MODULE ?></th>
           <th class="w-50"><?= TABLE_HEADING_INFO ?></th>
-          <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -119,7 +118,6 @@
             echo '<td><i class="' . $fa . '"></i> ' . htmlspecialchars($module['title']) . '</td>';
             echo '<td>' . htmlspecialchars($module['code']) . '</td>';
             echo '<td>' . $output . '</td>';
-            echo '<td class="text-right">' . (empty($secCheck->has_doc) ? '' : '<a href="http://library.oscommerce.com/Wiki&oscom_2_3&security_checks&' . $module['code'] . '" target="_blank" rel="noreferrer"><i class="fas fa-chevron-circle-right text-info"></i></a>') . '</td>';
           echo '</tr>';
         }
       ?>

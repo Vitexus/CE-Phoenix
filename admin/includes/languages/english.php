@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -32,7 +32,7 @@ const HTML_PARAMS = 'dir="ltr" lang="en"';
 const CHARSET = 'utf-8';
 
 // page title
-const TITLE = 'OSCOM CE Phoenix Administration Tool';
+const TITLE = 'CE Phoenix Administration Tool';
 
 // header text in includes/header.php
 const HEADER_TITLE_ONLINE_CATALOG = '<i class="fas fa-shopping-cart mr-1 text-primary"></i><span class="border-bottom border-primary">Your Shop</span>';

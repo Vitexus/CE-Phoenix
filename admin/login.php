@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -57,6 +57,8 @@
               $actionRecorder->_user_id = $_SESSION['admin']['id'];
               $actionRecorder->record();
 
+              $OSCOM_Hooks->call('login', 'processActionSuccess');
+
               if (isset($_SESSION['redirect_origin'])) {
                 $page = $redirect_origin['page'];
                 $get_string = http_build_query($redirect_origin['get']);
@@ -68,6 +70,8 @@
                 tep_redirect(tep_href_link('index.php'));
               }
             }
+
+            $OSCOM_Hooks->call('login', 'processActionFail');
           }
 
           if (isset($_POST['username'])) {
@@ -152,7 +156,7 @@
     <div class="card text-center shadow mt-5">
       <div class="card-header text-white bg-dark"><?= HEADING_TITLE; ?></div>
       <div class="px-5 py-2">
-        <?= tep_image('images/CE-Phoenix.png', 'OSCOM CE Phoenix',  null, null, 'class="card-img-top"'); ?>
+        <?= tep_image('images/CE-Phoenix.png', 'CE Phoenix',  null, null, 'class="card-img-top"'); ?>
       </div>
 
       <?= tep_draw_form('login', 'login.php', $parameter_string); ?>

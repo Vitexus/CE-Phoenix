@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -122,8 +122,12 @@
             <?php
             $filter = [];
 
-            if (isset($_GET['module']) && in_array($_GET['module'], $modules)) {
-              $filter[] = " module = '" . tep_db_input($_GET['module']) . "' ";
+            if (isset($_GET['module'])) {
+              if (in_array($_GET['module'], $modules)) {
+                $filter[] = " module = '" . tep_db_input($_GET['module']) . "' ";
+              } else {
+                unset($_GET['module']);
+              }
             }
 
             if (!empty($_GET['search'])) {

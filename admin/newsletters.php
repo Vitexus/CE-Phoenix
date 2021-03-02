@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -219,7 +219,7 @@
   } elseif ($action == 'preview') {
     $nID = tep_db_prepare_input($_GET['nID']);
 
-    $newsletter_query = tep_db_query("SELCT title, content, module FROM newsletters WHERE newsletters_id = " . (int)$nID);
+    $newsletter_query = tep_db_query("SELECT title, content, module FROM newsletters WHERE newsletters_id = " . (int)$nID);
     $newsletter = tep_db_fetch_array($newsletter_query);
 
     $nInfo = new objectInfo($newsletter);

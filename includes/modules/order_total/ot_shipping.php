@@ -2,10 +2,10 @@
 /*
   $Id$
 
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
+  CE Phoenix, E-Commerce made Easy
+  https://phoenixcart.org
 
-  Copyright (c) 2020 osCommerce
+  Copyright (c) 2021 Phoenix Cart
 
   Released under the GNU General Public License
 */
@@ -53,6 +53,9 @@
           $shipping_tax_description = tep_get_tax_description($GLOBALS[$module]->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
 
           $order->info['tax'] += tep_calculate_tax($order->info['shipping_cost'], $shipping_tax);
+          if (!isset($order->info['tax_groups']["$shipping_tax_description"])) {
+            Guarantor::guarantee_subarray($order->info, 'tax_groups')["$shipping_tax_description"] = 0;
+          }
           $order->info['tax_groups']["$shipping_tax_description"] += tep_calculate_tax($order->info['shipping_cost'], $shipping_tax);
           $order->info['total'] += tep_calculate_tax($order->info['shipping_cost'], $shipping_tax);
 
